@@ -1,0 +1,74 @@
+swiper.data-v-6e1793b4 {
+  height: 400rpx;
+  width: 100%;
+}
+swiper swiper-item image.data-v-6e1793b4 {
+  width: 100%;
+  height: 400rpx;
+}
+#btnLine.data-v-6e1793b4 {
+  padding: 8rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+#btnLine .navBtn.data-v-6e1793b4 {
+  width: 170rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  background-color: #f00;
+}
+#infoBox.data-v-6e1793b4 {
+  height: 300rpx;
+  padding: 20rpx;
+}
+#infoBox .infoTitle.data-v-6e1793b4 {
+  font-weight: bold;
+  font-size: 32rpx;
+}
+#infoBox .infoDetails.data-v-6e1793b4 {
+  margin-top: 20rpx;
+}
+#infoBox .infoDetails .info.data-v-6e1793b4 {
+  margin-bottom: 15rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+#infoBox .infoDetails .info .infoImage.data-v-6e1793b4 {
+  height: 180rpx;
+  width: 240rpx;
+}
+#infoBox .infoDetails .info .infoRight.data-v-6e1793b4 {
+  padding: 0 20rpx;
+  width: 300rpx;
+  height: 180rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+#infoBox .infoDetails .info .infoRight .infoRightTitle.data-v-6e1793b4 {
+  color: #2f2f2f;
+  font-weight: 600;
+}
+#infoBox .infoDetails .info .infoRight .infoTime.data-v-6e1793b4 {
+  font-size: 24rpx;
+  color: #aaa;
+}
+

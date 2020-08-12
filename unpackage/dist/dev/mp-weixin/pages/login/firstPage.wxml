@@ -1,0 +1,1 @@
+<view id="loginBox" class="data-v-6d297a50"><image class="logo data-v-6d297a50" src="../../static/logo.png"></image><button data-event-opts="{{[['tap',[['toAgency',['$event']]]]]}}" class="agencyBtn btn data-v-6d297a50" bindtap="__e">合作机构</button><button class="visitor btn data-v-6d297a50">普通用户</button></view>

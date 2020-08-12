@@ -1,0 +1,40 @@
+#loginBox .logo.data-v-3e52fce4 {
+  display: block;
+  height: 200rpx;
+  width: 200rpx;
+  margin: 200rpx auto;
+  border-radius: 50%;
+}
+#loginBox .userName.data-v-3e52fce4,
+#loginBox .password.data-v-3e52fce4 {
+  margin-bottom: 40rpx;
+  font-size: 40rpx;
+}
+#loginBox .usernameInput.data-v-3e52fce4,
+#loginBox .passwordInput.data-v-3e52fce4 {
+  margin: 0 auto;
+  width: 70%;
+  border: 1px solid #bbb;
+  border-radius: 10rpx;
+  padding-left: 12rpx;
+  height: 100rpx;
+}
+#loginBox .userName.data-v-3e52fce4 {
+  margin-top: 40rpx;
+}
+#loginBox .btns.data-v-3e52fce4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+}
+#loginBox .btns .loginBtn.data-v-3e52fce4 {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+

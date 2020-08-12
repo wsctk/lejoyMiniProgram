@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/classroomReserve/editor",
+    "pages/classroomReserve/appoint",
+    "pages/classroomReserve/addTrainAid",
+    "pages/login/firstPage",
+    "pages/login/agency",
+    "pages/classroomReserve/classroomReserveDetail",
+    "pages/classroomReserve/chooseClassroom",
+    "pages/home-page/home_page",
+    "pages/mine-page/mine_page"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "vantStore",
+    "navigationBarBackgroundColor": "#ff9300",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#d4237a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home-page/home_page",
+        "iconPath": "/static/无标题.png",
+        "selectedIconPath": "static/无标题.png"
+      },
+      {
+        "pagePath": "pages/mine-page/mine_page",
+        "iconPath": "/static/无标题3.png",
+        "selectedIconPath": "static/无标题3.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

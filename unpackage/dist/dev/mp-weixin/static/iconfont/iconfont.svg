@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="add-select" unicode="&#59312;" d="M544 682.666667v-266.666667H810.666667v-64H544V85.33333300000004h-64V352H213.333333v64h266.666667V682.666667z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="sami-select" unicode="&#59313;" d="M810.666667 416v-64H213.333333v64z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

@@ -1,0 +1,16 @@
+#loginBox .logo.data-v-6d297a50 {
+  display: block;
+  height: 200rpx;
+  width: 200rpx;
+  margin: 200rpx auto;
+  border-radius: 50%;
+}
+#loginBox .btn.data-v-6d297a50 {
+  width: 600rpx;
+  line-height: 130rpx;
+  height: 130rpx;
+}
+#loginBox .agencyBtn.data-v-6d297a50 {
+  margin-bottom: 50rpx;
+}
+
