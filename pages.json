@@ -1,7 +1,21 @@
 {
 	"pages": [
 		{
-			"path": "pages/classroomReserve/editor",
+			"path": "pages/login/agency",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/login/forgetPassword",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/login/visitor",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
@@ -23,13 +37,6 @@
 		},
 		{
 			"path": "pages/login/firstPage",
-			"style": {
-					"navigationBarTitleText": "leJoy",
-					"navigationStyle": "custom"
-				}
-		},
-		{
-			"path": "pages/login/agency",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"

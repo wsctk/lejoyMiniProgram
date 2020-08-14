@@ -3,16 +3,14 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<form>
 			<view class="userName">
-				<input type='text' class='usernameInput' placeholder="用户名" name="input"></input>
+				<input type='text' class='usernameInput' placeholder="用户名" v-model="username"></input>
 			</view>
 			<view class="password">
-				<input type='text' class="passwordInput" placeholder="密码" name="input"></input>
+				<input type='text' class="passwordInput" placeholder="密码" v-model="password"></input>
 			</view>
 			<view class='btns'>
-				<navigator url="/pages/home-page/home_page" open-type="switchTab">
-					<button type='primary' size='small' class='loginBtn'>登录</button>
-				</navigator>
-				<navigator url="/pages/home-page/home_page" open-type="switchTab">
+				<button type='primary' size='small' class='loginBtn' @click='login'>登录</button>
+				<navigator url="./forgetPassword">
 					<button type='warn' size='small' class='loginBtn'>忘记密码</button>
 				</navigator>
 			</view>
@@ -24,15 +22,24 @@
 	export default {
 		data() {
 			return {
-				username: '用户名：',
-				password: '密码：'
+				username: '',
+				password: ''
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			async login () {
+				const res = this.$ask({
+					url: 'login/doLoginByPassWord',
+					data: {
+						userName: this.username,
+						password: this.password
+					},
+					method: 'post'
+				})
+			}
 		}
 	}
 </script>
