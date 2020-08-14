@@ -1,0 +1,26 @@
+.tabbar.data-v-6b6b6164 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 110rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #FFFFFF;
+}
+.tabbar .box.data-v-6b6b6164 {
+  padding: 20rpx;
+  min-width: 180rpx;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+          flex-grow: 1;
+  text-align: center;
+  background-color: #eee;
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+.tabbar .box .img.data-v-6b6b6164 {
+  width: 40rpx;
+  height: 40rpx;
+}
+

@@ -1,0 +1,1 @@
+<view>这是律师服务<button type="primary" data-event-opts="{{[['tap',[['sendform',['$event']]]]]}}" bindtap="__e">send</button></view>

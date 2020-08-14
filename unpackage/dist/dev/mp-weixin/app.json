@@ -1,14 +1,22 @@
 {
   "pages": [
-    "pages/classroomReserve/editor",
-    "pages/classroomReserve/appoint",
-    "pages/classroomReserve/addTrainAid",
+    "pages/home-page/home_page",
     "pages/login/firstPage",
     "pages/login/agency",
-    "pages/classroomReserve/classroomReserveDetail",
-    "pages/classroomReserve/chooseClassroom",
-    "pages/home-page/home_page",
-    "pages/mine-page/mine_page"
+    "pages/login/forgetPassword",
+    "pages/login/visitor",
+    "pages/home-page/classroomReserve/appoint",
+    "pages/home-page/classroomReserve/addTrainAid",
+    "pages/home-page/classroomReserve/classroomReserveDetail",
+    "pages/home-page/classroomReserve/chooseClassroom",
+    "pages/home-page/chainCourse/addNewCourse",
+    "pages/home-page/classManage/classList",
+    "pages/home-page/contact/contactPdf",
+    "pages/home-page/Service/adService/adService",
+    "pages/home-page/Service/billService/billList",
+    "pages/home-page/Service/lawyerService/lawyerIntroduce",
+    "pages/home-page/Service/InternetService/InternetIntroduce",
+    "pages/personal/firstPage"
   ],
   "subPackages": [],
   "window": {
@@ -17,23 +25,10 @@
     "navigationBarBackgroundColor": "#ff9300",
     "backgroundColor": "#FFFFFF"
   },
-  "tabBar": {
-    "color": "#8a8a8a",
-    "selectedColor": "#d4237a",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/home-page/home_page",
-        "iconPath": "/static/无标题.png",
-        "selectedIconPath": "static/无标题.png"
-      },
-      {
-        "pagePath": "pages/mine-page/mine_page",
-        "iconPath": "/static/无标题3.png",
-        "selectedIconPath": "static/无标题3.png"
-      }
-    ]
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "usingComponents": {}
 }

@@ -1,8 +1,12 @@
 <template>
 	<view id='loginBox'>
 		<image class='logo' src='../../static/logo.png'></image>
-		<button class='agencyBtn btn' @click='toAgency'>合作机构</button>
-		<button class='visitor btn'>普通用户</button>
+		<navigator url="./agency" open-type="navigate">
+			<button class='agencyBtn btn'>合作机构</button>
+		</navigator>
+		<navigator url="./visitor" open-type="navigate">
+			<button class='visitor btn'>普通用户</button>
+		</navigator>
 	</view>
 </template>
 
@@ -10,18 +14,6 @@
 	export default {
 		data () {
 			return {
-			}
-		},
-		methods: {
-			toAgency(e) {
-				console.log(e)
-				// var newsid = e.currentTarget.dataset.newsid
-				uni.navigateTo({
-					url: './agency',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				})
 			}
 		}
 	}

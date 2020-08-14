@@ -1,6 +1,20 @@
 {
 	"pages": [
 		{
+			"path": "pages/home-page/home_page",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/login/firstPage",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/login/agency",
 			"style": {
 					"navigationBarTitleText": "leJoy",
@@ -22,49 +36,84 @@
 				}
 		},
 		{
-			"path": "pages/classroomReserve/appoint",
+			"path": "pages/home-page/classroomReserve/appoint",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/classroomReserve/addTrainAid",
+			"path": "pages/home-page/classroomReserve/addTrainAid",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/login/firstPage",
+			"path": "pages/home-page/classroomReserve/classroomReserveDetail",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/classroomReserve/classroomReserveDetail",
+			"path": "pages/home-page/classroomReserve/chooseClassroom",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/classroomReserve/chooseClassroom",
+			"path": "pages/home-page/chainCourse/addNewCourse",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/home-page/home_page",
+			"path": "pages/home-page/classManage/classList",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
 				}
 		},
 		{
-			"path": "pages/mine-page/mine_page",
+			"path": "pages/home-page/contact/contactPdf",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/home-page/Service/adService/adService",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/home-page/Service/billService/billList",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/home-page/Service/lawyerService/lawyerIntroduce",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/home-page/Service/InternetService/InternetIntroduce",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/personal/firstPage",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"
@@ -76,25 +125,5 @@
 		"navigationBarTitleText": "vantStore",
 		"navigationBarBackgroundColor": "#ff9300",
 		"backgroundColor": "#FFFFFF"
-	},
-	"tabBar": {
-			"color":"#8a8a8a",
-			"selectedColor":"#d4237a",
-			"borderStyle":"black",
-			"backgroundColor":"#ffffff",
-			"list": [
-				{
-					"pagePath":"pages/home-page/home_page",
-					// "text":"首页",
-					"iconPath":"/static/无标题.png",
-					"selectedIconPath":"static/无标题.png"
-				},
-				{
-					"pagePath":"pages/mine-page/mine_page",
-					// "text":"分类",
-					"iconPath":"/static/无标题3.png",
-					"selectedIconPath":"static/无标题3.png"
-				}
-			]
-		}
+	}
 }

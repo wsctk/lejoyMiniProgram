@@ -1,5 +1,5 @@
 <template>
-	<view id='login'>
+	<view id='login'	>
 		<view class='logo'></view>
 		<view class='phoneNumber'>
 			<input type='text' class="phoneinput" placeholder="请输入手机号" v-model="phonenumber"></input>
@@ -73,6 +73,15 @@
 					}
 				})
 				console.log(res)
+			},
+			starttouch () {
+				console.log('触摸开始')
+			},
+			move (e) {
+				console.log('开始滑动')
+			},
+			endtouch () {
+				console.log('触摸结束')
 			}
 		}
 	}
@@ -80,6 +89,7 @@
 
 <style lang='less' scoped>
 	#login {
+		height:1334rpx;
 		.logo {
 			height:300rpx;
 		}

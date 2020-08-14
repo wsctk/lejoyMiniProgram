@@ -1,0 +1,36 @@
+#login.data-v-3591601f {
+  height: 1334rpx;
+}
+#login .logo.data-v-3591601f {
+  height: 300rpx;
+}
+#login .phoneNumber.data-v-3591601f {
+  height: 200rpx;
+}
+#login .phoneNumber .phoneinput.data-v-3591601f {
+  margin: 0 auto;
+  width: 70%;
+  border-bottom: 1px solid #bbb;
+  padding-left: 12rpx;
+  height: 100rpx;
+}
+#login .code.data-v-3591601f {
+  height: 100rpx;
+  padding: 40rpx 0;
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+}
+#login .code .codeinput.data-v-3591601f {
+  margin: 0 auto;
+  border-bottom: 1px solid #bbb;
+  padding-left: 12rpx;
+  height: 100rpx;
+}
+#login .code .getCode.data-v-3591601f {
+  position: absolute;
+  right: 0;
+  top: 40rpx;
+  z-index: 10;
+}
+
