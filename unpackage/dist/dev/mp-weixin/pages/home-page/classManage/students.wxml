@@ -1,0 +1,1 @@
+<view id="stu"><block wx:for="{{students}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="student">{{''+item.name+''}}</view></block></view>

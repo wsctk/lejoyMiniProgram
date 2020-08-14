@@ -1,6 +1,10 @@
 <template>
 	<view>
-		<view style='height:100rpx;'></view>
+		<view style='height:100rpx;'>
+			<navigator url="../home_page" open-type="navigate" hover-class="other-navigator-hover">
+				<uni-icons type="arrowleft" size="24" class="navBackIcon"></uni-icons>
+			</navigator>
+		</view>
 		<view id='tabs'>
 			<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="text" active-color="#0f0f0f"></uni-segmented-control>
 			<view class="content">

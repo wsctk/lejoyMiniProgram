@@ -78,6 +78,13 @@
 				}
 		},
 		{
+			"path": "pages/home-page/classManage/students",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/home-page/contact/contactPdf",
 			"style": {
 					"navigationBarTitleText": "leJoy",
@@ -114,6 +121,13 @@
 		},
 		{
 			"path": "pages/personal/firstPage",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/info/info",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"

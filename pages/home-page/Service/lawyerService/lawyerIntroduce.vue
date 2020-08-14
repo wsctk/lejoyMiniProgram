@@ -27,8 +27,7 @@
 				const userid = uni.getStorageSync('userId')
 				for (let i = 0; i< this.formleft.length; i++) {
 					let left = this.formleft[i].id
-					console.log(left)
-					this.sendform1.push({fieldId: left, userId:userid, content: '123123' })
+					this.sendform1.push({fieldId: left, userId: userid, content: '123123' })
 				}
 				const res = await this.$ask({
 					url: 'lawyer/submitAdvisoryInformation',

@@ -48,8 +48,7 @@
   height: 70rpx;
 }
 #infoBox.data-v-6e1793b4 {
-  height: 300rpx;
-  padding: 20rpx;
+  padding: 20rpx 20rpx 110rpx 20rpx;
 }
 #infoBox .infoTitle.data-v-6e1793b4 {
   font-weight: bold;
@@ -68,12 +67,13 @@
           align-items: center;
 }
 #infoBox .infoDetails .info .infoImage.data-v-6e1793b4 {
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
   height: 180rpx;
   width: 240rpx;
 }
 #infoBox .infoDetails .info .infoRight.data-v-6e1793b4 {
   padding: 0 20rpx;
-  width: 300rpx;
   height: 180rpx;
   display: -webkit-box;
   display: -webkit-flex;

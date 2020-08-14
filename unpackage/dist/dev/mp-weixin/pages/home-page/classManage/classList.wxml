@@ -1,1 +1,1 @@
-<view>这是班级管理</view>
+<view><navigator class="nav" url="./students">点我</navigator></view>

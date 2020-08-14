@@ -84,35 +84,17 @@
 				interval: 2000,
 				duration: 500,
 				infoList: [
-					{ id:1, title:'这是一条资讯的标题这是一条资讯的标题', time:'08月07日', src: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp'},
+					{ id:1, title:'这是一条资讯的标', time:'08月07日', src: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp'},
 					{ id:2, title:'这是一条资讯的标题这是一条资讯的标题', time:'08月07日', src: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp'},
 					{ id:3, title:'这是一条资讯的标题这是一条资讯的标题', time:'08月07日', src: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp'}
 				]
 			}
 		},
 		components: {tabbar},
-		onLoad() { 
-			this.amapPlugin = new amap.AMapWX({  
-				key: this.key  
-			})
-			this.getRegeo()
-		},
 		methods: {
-			getRegeo () {
-				uni.showLoading({  
-					title: '获取信息中'  
-				})
-				this.amapPlugin.getRegeo({  
-					success: (data) => {  
-						console.log(data)
-						this.addressName = data[0].regeocodeData.addressComponent.province
-						uni.hideLoading()
-					}  
-				})
-			},
 			bindPickerChange: function(e) {
 				this.index = e.target.value
-			},
+			}
 		}
 	}
 </script>
@@ -163,8 +145,7 @@
 		}
 	}
 	#infoBox {
-		height:300rpx;
-		padding: 20rpx;
+		padding: 20rpx 20rpx 110rpx 20rpx;
 		.infoTitle {
 			font-weight: bold;
 			font-size: 32rpx;
@@ -176,12 +157,12 @@
 				display:flex;
 				align-items: center;
 				.infoImage {
+					flex-shrink: 0;
 					height:180rpx;
 					width:240rpx;
 				}
 				.infoRight {
 					padding: 0 20rpx;
-					width:300rpx;
 					height:180rpx;
 					display: flex;
 					flex-direction: column;
