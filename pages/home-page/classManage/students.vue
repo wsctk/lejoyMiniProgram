@@ -1,7 +1,10 @@
 <template>
 	<view id='stu'>
-		<view v-for='item in students' :key='item.id' class='student'>
-			{{item.name}}
+		<view class='title'>【{{classname}}】现在有{{howmany}}名学员</view>
+		<view class='box'>
+			<view v-for='item in students' :key='item.id' class='student'>
+				{{item.name}}
+			</view>
 		</view>
 	</view>
 </template>
@@ -10,6 +13,8 @@
 	export default {
 		data () {
 			return {
+				classname: '班级名称',
+				howmany: 30,
 				students: [
 					{name: '谷小二', id:1},
 					{name: '谷小二', id:2},
@@ -43,5 +48,31 @@
 	}
 </script>
 
-<style>
+<style lang='less' scoped>
+	#stu {
+		text-align: center;
+		.title {
+			font-size: 36rpx;
+			height: 80rpx;
+			line-height: 80rpx;
+			margin-bottom: 40rpx;
+		}
+		.box {
+			display: flex;
+			flex-wrap: wrap;
+			align-content: space-between;
+			height:800rpx;
+			margin-right:-10rpx;
+			.student {
+				width: 180rpx;
+				height: 70rpx;
+				margin-right:10rpx;
+				font-size: 26rpx;
+				box-sizing: border-box;
+				line-height: 70rpx;
+				border: 1px solid #aaa;
+				border-radius: 14rpx;
+			}
+		}
+	}
 </style>

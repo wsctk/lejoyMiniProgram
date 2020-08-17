@@ -760,7 +760,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1749,7 +1749,7 @@ function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0;var BASE_URL = 'http://192.168.18.10:8083/';
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0;var BASE_URL = 'https://lexiang-mechanism.it-10.com/';
 var myRequest = function myRequest(options) {
   return new Promise(function (resolve, reject) {
     uni.request({
@@ -1760,12 +1760,155 @@ var myRequest = function myRequest(options) {
         'content-type': 'application/x-www-form-urlencoded' },
 
       success: options.success || function (res) {
-        if (res.data.code !== 0) {
-          return uni.showToast({
-            title: '获取数据失败' });
+        switch (res.data.code) {
+          case 1:
+            return uni.showToast({
+              title: '用户未登录',
+              icon: 'none' });
 
-        }
-        resolve(res);
+            break;
+          case 2:
+            return uni.showToast({
+              title: '非法参数',
+              icon: 'none' });
+
+            break;
+          case 3:
+            return uni.showToast({
+              title: '用户已存在',
+              icon: 'none' });
+
+            break;
+          case 4:
+            return uni.showToast({
+              title: '找不到记录',
+              icon: 'none' });
+
+            break;
+          case 5:
+            return uni.showToast({
+              title: '无权限访问',
+              icon: 'none' });
+
+            break;
+          case 6:
+            return uni.showToast({
+              title: '服务器内部错误',
+              icon: 'none' });
+
+            break;
+          case 7:
+            return uni.showToast({
+              title: '状态错误',
+              icon: 'none' });
+
+            break;
+          case 8:
+            return uni.showToast({
+              title: '内容重复',
+              icon: 'none' });
+
+            break;
+          case 9:
+            return uni.showToast({
+              title: '找不到内容',
+              icon: 'none' });
+
+            break;
+          case 10:
+            return uni.showToast({
+              title: '验证失败',
+              icon: 'none' });
+
+            break;
+          case 11:
+            return uni.showToast({
+              title: '登录过期',
+              icon: 'none' });
+
+            break;
+          case 12:
+            return uni.showToast({
+              title: '登录失效',
+              icon: 'none' });
+
+            break;
+          case 13:
+            return uni.showToast({
+              title: '验证码错误',
+              icon: 'none' });
+
+            break;
+          case 14:
+            return uni.showToast({
+              title: '用户操作异常',
+              icon: 'none' });
+
+            break;
+          case 15:
+            return uni.showToast({
+              title: '文件读写错误',
+              icon: 'none' });
+
+            break;
+          case 16:
+            return uni.showToast({
+              title: '无效的请求签名',
+              icon: 'none' });
+
+            break;
+          case 17:
+            return uni.showToast({
+              title: 'token鉴权错误',
+              icon: 'none' });
+
+            break;
+          case 18:
+            return uni.showToast({
+              title: 'token已过期',
+              icon: 'none' });
+
+            break;
+          case 19:
+            return uni.showToast({
+              title: '请求已过期',
+              icon: 'none' });
+
+            break;
+          case 20:
+            return uni.showToast({
+              title: '用户名或密码错误',
+              icon: 'none' });
+
+            break;
+          case 21:
+            return uni.showToast({
+              title: '用户不存在',
+              icon: 'none' });
+
+            break;
+          case 22:
+            return uni.showToast({
+              title: '手机号已存在',
+              icon: 'none' });
+
+            break;
+          case 87014:
+            return uni.showToast({
+              title: '包含敏感信息',
+              icon: 'none' });
+
+            break;
+          case undefined:
+            return uni.showToast({
+              title: '获取信息失败',
+              icon: 'none' });
+
+            break;
+          default:
+            resolve(res);
+            break;}
+
       },
       fail: function fail(err) {
         uni.showToast({
@@ -1780,7 +1923,7 @@ var myRequest = function myRequest(options) {
 
 /***/ }),
 
-/***/ 161:
+/***/ 167:
 /*!***************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-icons/icons.js ***!
   \***************************************************************/
@@ -1922,7 +2065,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 176:
+/***/ 182:
 /*!*****************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/util.js ***!
   \*****************************************************************/
@@ -1930,7 +2073,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 183));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 Calendar = /*#__PURE__*/function () {
   function Calendar()
@@ -2260,7 +2403,7 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 177:
+/***/ 183:
 /*!*********************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
   \*********************************************************************/
@@ -8341,7 +8484,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8362,14 +8505,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8454,7 +8597,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));

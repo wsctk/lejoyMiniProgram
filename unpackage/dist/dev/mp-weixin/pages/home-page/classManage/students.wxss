@@ -1,0 +1,31 @@
+#stu.data-v-19ac1335 {
+  text-align: center;
+}
+#stu .title.data-v-19ac1335 {
+  font-size: 36rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom: 40rpx;
+}
+#stu .box.data-v-19ac1335 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: space-between;
+          align-content: space-between;
+  height: 800rpx;
+  margin-right: -10rpx;
+}
+#stu .box .student.data-v-19ac1335 {
+  width: 180rpx;
+  height: 70rpx;
+  margin-right: 10rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  line-height: 70rpx;
+  border: 1px solid #aaa;
+  border-radius: 14rpx;
+}
+

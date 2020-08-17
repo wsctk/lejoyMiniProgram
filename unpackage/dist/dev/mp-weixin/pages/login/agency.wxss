@@ -26,9 +26,8 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
   width: 70%;
   margin: 0 auto;
 }
@@ -36,5 +35,6 @@
   width: 200rpx;
   height: 70rpx;
   line-height: 70rpx;
+  margin: 0;
 }
 

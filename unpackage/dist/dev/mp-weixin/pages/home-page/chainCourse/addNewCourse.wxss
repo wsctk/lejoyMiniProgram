@@ -1,0 +1,91 @@
+#topbar.data-v-72ed5cf8 {
+  height: 80rpx;
+  text-align: center;
+}
+#addTitleImg.data-v-72ed5cf8 {
+  width: 95%;
+  height: 300rpx;
+  margin: 0 auto;
+  border: 1px solid #eee;
+}
+#addTitleImg .addicon.data-v-72ed5cf8 {
+  position: relative;
+  height: 300rpx;
+}
+#addTitleImg .addicon.data-v-72ed5cf8:before {
+  content: '';
+  width: 160rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-80rpx);
+          transform: translateX(-80rpx);
+  border: 1px solid #aaa;
+}
+#addTitleImg .addicon.data-v-72ed5cf8:after {
+  content: '';
+  height: 120rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-60rpx);
+          transform: translateY(-60rpx);
+  border: 1px solid #aaa;
+}
+#likeRichText.data-v-72ed5cf8 {
+  width: 95%;
+  margin: 0 auto;
+}
+#likeRichText .content.data-v-72ed5cf8 {
+  border: 1px solid #eee;
+}
+#likeRichText .content .whatIsThis.data-v-72ed5cf8 {
+  border: 1px solid #eee;
+  height: 100rpx;
+}
+#likeRichText .content .whatIsThis .bigImg .titleLine.data-v-72ed5cf8 {
+  height: 40rpx;
+  position: relative;
+}
+#likeRichText .content .whatIsThis .bigImg .titleLine .arrow1.data-v-72ed5cf8 {
+  position: absolute;
+  left: 80rpx;
+  top: 10rpx;
+  text-align: center;
+  line-height: 16rpx;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 24rpx;
+  width: 24rpx;
+}
+#likeRichText .content .whatIsThis .bigImg .titleLine .arrow2.data-v-72ed5cf8 {
+  position: absolute;
+  left: 130rpx;
+  top: 10rpx;
+  text-align: center;
+  line-height: 16rpx;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 24rpx;
+  width: 24rpx;
+}
+#likeRichText .content .whatIsThis .bigImg .titleLine .xx.data-v-72ed5cf8 {
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+  width: 30rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+}
+#likeRichText .btns.data-v-72ed5cf8 {
+  margin-top: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+#likeRichText .btns .btn.data-v-72ed5cf8 {
+  width: 25%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+

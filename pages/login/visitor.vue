@@ -1,5 +1,5 @@
 <template>
-	<view id='login'	>
+	<view id='login'>
 		<view class='logo'></view>
 		<view class='phoneNumber'>
 			<input type='text' class="phoneinput" placeholder="请输入手机号" v-model="phonenumber"></input>
@@ -40,23 +40,38 @@
 		},
 		methods: {
 			async getPhoneNumber (e) {
-				console.log(e)
 				const userid = uni.getStorageSync('userId')
-				console.log(e)
 				const res = await this.$ask({
 					url: 'login/getPhoneNumber',
 					data: {encryptedData: e.detail.encryptedData, iv: e.detail.iv, userId: userid},
-					method: 'post'
+					method: 'post',
+					header: {
+						'content-type': 'application/json'
+					}
 				})
-				console.log(res)
 				uni.setStorageSync('phonenumber', res.data.data)
+				if (res) {
+					uni.navigateTo({
+						url: '/pages/home-page/home_page'
+					})
+				}
 			},
 			async getCode () {
+				if (this.phonenumber === '') {
+					return uni.showToast({
+						title: '请输入手机号！',
+						icon: 'none'
+					})
+				} else if (isNaN(this.phonenumber) ||(this.phonenumber.length !== 11)) {
+					return uni.showToast({
+						title: '手机号格式错误',
+						icon: 'none'
+					})
+				}
 				const res = await this.$ask({
 					url: 'login/getVerifyCode',
 					data: {phoneNumber: this.phonenumber}
 				})
-				console.log(res)
 			},
 			async login () {
 				const userid = uni.getStorageSync('userId')
@@ -72,16 +87,11 @@
 						}
 					}
 				})
-				console.log(res)
-			},
-			starttouch () {
-				console.log('触摸开始')
-			},
-			move (e) {
-				console.log('开始滑动')
-			},
-			endtouch () {
-				console.log('触摸结束')
+				if (res) {
+					uni.navigateTo({
+						url: '/pages/home-page/home_page'
+					})
+				}
 			}
 		}
 	}

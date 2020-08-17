@@ -10,7 +10,7 @@
 			</view>
 			<view class='btns'>
 				<button type='primary' size='small' class='loginBtn' @click='login'>登录</button>
-				<navigator url="./forgetPassword">
+				<navigator url="./forgetPassword" class='forget'>
 					<button type='warn' size='small' class='loginBtn'>忘记密码</button>
 				</navigator>
 			</view>
@@ -31,7 +31,7 @@
 		},
 		methods: {
 			async login () {
-				const res = this.$ask({
+				const res = await this.$ask({
 					url: 'login/doLoginByPassWord',
 					data: {
 						userName: this.username,
@@ -39,6 +39,11 @@
 					},
 					method: 'post'
 				})
+				if (res) {
+					uni.navigateTo({
+						url: '/pages/home-page/home_page'
+					})
+				}
 			}
 		}
 	}
@@ -70,13 +75,14 @@
 		}
 		.btns {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 			width:70%;
 			margin:0 auto;
 			.loginBtn {
 				width:200rpx;
 				height:70rpx;
 				line-height: 70rpx;
+				margin:0;
 			}
 		}
 	}

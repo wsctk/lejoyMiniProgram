@@ -1,7 +1,31 @@
-
-.nav {
-	width:100%;
-	height:200rpx;
-	background-color: #f00;
+#filter.data-v-9b98992e {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  text-align: center;
+}
+#filter .btn.data-v-9b98992e {
+  width: 23%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid #eee;
+  border-radius: 10rpx;
+}
+#classList.data-v-9b98992e {
+  width: 100%;
+  text-align: center;
+}
+#classList .classNav.data-v-9b98992e {
+  padding: 40rpx 0 50rpx 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+#classList .classNav .text.data-v-9b98992e {
+  font-size: 32rpx;
+  height: 40rpx;
+  line-height: 40rpx;
 }
 

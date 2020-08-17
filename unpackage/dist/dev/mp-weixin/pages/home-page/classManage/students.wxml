@@ -1,1 +1,1 @@
-<view id="stu"><block wx:for="{{students}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="student">{{''+item.name+''}}</view></block></view>
+<view id="stu" class="data-v-19ac1335"><view class="title data-v-19ac1335">{{"【"+classname+"】现在有"+howmany+"名学员"}}</view><view class="box data-v-19ac1335"><block wx:for="{{students}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="student data-v-19ac1335">{{''+item.name+''}}</view></block></view></view>

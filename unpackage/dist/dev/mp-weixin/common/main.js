@@ -122,7 +122,6 @@ var _amapWx = _interopRequireDefault(__webpack_require__(/*! ./common/amap-wx.js
 
     this.amapPlugin.getRegeo({
       success: function success(data) {
-        console.log(data);
         _this.addressName = data[0].regeocodeData.addressComponent.province;
         uni.hideLoading();
       } });
