@@ -75,9 +75,9 @@
 				index: 0,
 				search: '',
 				swiperList: [
-					{ id:1, name:1, src:'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp' },
-					{ id:2, name:2, src:'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp' },
-					{ id:3, name:3, src:'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp' }
+					{ id:1, name:1, src:'/static/123.jpg' },
+					{ id:2, name:2, src:'/static/123.jpg' },
+					{ id:3, name:3, src:'/static/123.jpg' }
 				],
 				indicatorDots: true,
 				autoplay: true,
