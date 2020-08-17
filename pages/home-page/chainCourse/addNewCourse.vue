@@ -27,15 +27,15 @@
 						</view>
 					</view>
 					<view class='bigImg' v-show='item.bigImg'>
-						<image class='bImg' :src='item.url'></image>
+						<image class='bImg' :src='item.url' webp='true'></image>
 					</view>
 					<movable-area class='smallImg' v-show='item.smallImg'>
-						<!-- <movable-view v-for='(img, id) in item.smallImgList' :key='img.id' class='con' :x="img.x" :y="img.y" direction="all" :damping="40" @change='onchange($event, img)'@touchstart='touchstart($event,img)' @touchend='touchend(img)' @mouseup='touchend(img)'>
-							<image :src='img.url' class='img'></image>
-							<view class='throwout' @click='worht(id)'>
+						<movable-view v-for='(img, index) in item.smallImgList' :key='img.id' class='con' :x="img.x" :y="img.y" direction="all" :damping="40" @change='onchange(img)' @touchstart='touchstart(img)' @touchend='touchend(img)' @mouseup='touchend(img)'>
+							<image :src='img.url' class='img' webp='true'></image>
+							<!-- <view class='throwout' @click='worht(id)'>
 								<uni-icons type='close'></uni-icons>
-							</view>
-						</movable-view> -->
+							</view> -->
+						</movable-view>
 					</movable-area>
 					<textarea v-show='item.text' placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
 					<view class='video' v-show='item.video'>1237</view>
@@ -164,19 +164,17 @@
 				this.itemList.splice(index, 1)
 				this.count--
 			},
-			onchange (e, img) {
-				console.log('123')
+			onchange (img) {
 			},
-			touchstart (e, img) {
-				this.oldX = img.x
-				this.oldY = img.y
-				console.log(e)
-				console.log(this.oldX)
+			touchstart (img) {
+				img.x = 0
+				img.y = 0
+				console.log(img)
 			},
 			touchend (img) {
-				img.offset = '200rpx'
+				console.log(img)
+				img.x = '200rpx'
 				img.y = '200rpx'
-				console.log(e)
 			}
 		}
 	}
