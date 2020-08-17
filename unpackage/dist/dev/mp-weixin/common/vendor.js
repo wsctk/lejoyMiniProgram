@@ -1729,9 +1729,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 12:
-/*!******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/static/iconfont/iconfont.css ***!
-  \******************************************************************/
+/*!**************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/static/iconfont/iconfont.css ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1742,9 +1742,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 13:
-/*!*************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/util/api.js ***!
-  \*************************************************/
+/*!*********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/util/api.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1923,17 +1923,10 @@ var myRequest = function myRequest(options) {
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 167:
+/***/ 160:
 /*!***************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-icons/icons.js ***!
   \***************************************************************/
-=======
-/***/ 161:
-/*!*******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-icons/icons.js ***!
-  \*******************************************************************/
->>>>>>> 7506c3510d1ea64d71caa35a605af554b80a7967
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2072,17 +2065,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ 182:
 /*!*****************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/util.js ***!
   \*****************************************************************/
-=======
-/***/ 176:
-/*!*********************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/util.js ***!
-  \*********************************************************************/
->>>>>>> 7506c3510d1ea64d71caa35a605af554b80a7967
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2417,17 +2403,10 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ 183:
 /*!*********************************************************************!*\
   !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
   \*********************************************************************/
-=======
-/***/ 177:
-/*!*************************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
-  \*************************************************************************/
->>>>>>> 7506c3510d1ea64d71caa35a605af554b80a7967
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9056,18 +9035,29 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 36:
+/***/ 4:
+/*!********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/pages.json ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 44:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 37);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 45);
 
 /***/ }),
 
-/***/ 37:
+/***/ 45:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9098,7 +9088,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 38);
+module.exports = __webpack_require__(/*! ./runtime */ 46);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9115,7 +9105,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 38:
+/***/ 46:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9847,21 +9837,10 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 4:
-/*!************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/pages.json ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ 8:
-/*!*******************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/common/amap-wx.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/common/amap-wx.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

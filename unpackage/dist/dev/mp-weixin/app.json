@@ -1,13 +1,8 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/home-page/chainCourse/addNewCourse",
     "pages/login/firstPage",
     "pages/home-page/home_page",
-=======
-    "pages/home-page/home_page",
-    "pages/login/firstPage",
->>>>>>> 7506c3510d1ea64d71caa35a605af554b80a7967
     "pages/login/agency",
     "pages/login/forgetPassword",
     "pages/login/visitor",
@@ -15,10 +10,6 @@
     "pages/home-page/classroomReserve/addTrainAid",
     "pages/home-page/classroomReserve/classroomReserveDetail",
     "pages/home-page/classroomReserve/chooseClassroom",
-<<<<<<< HEAD
-=======
-    "pages/home-page/chainCourse/addNewCourse",
->>>>>>> 7506c3510d1ea64d71caa35a605af554b80a7967
     "pages/home-page/classManage/classList",
     "pages/home-page/classManage/students",
     "pages/home-page/contact/contactPdf",

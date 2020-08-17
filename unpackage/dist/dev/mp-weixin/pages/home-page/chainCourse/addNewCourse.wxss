@@ -41,41 +41,71 @@
 }
 #likeRichText .content .whatIsThis.data-v-72ed5cf8 {
   border: 1px solid #eee;
-  height: 100rpx;
 }
-#likeRichText .content .whatIsThis .bigImg .titleLine.data-v-72ed5cf8 {
+#likeRichText .content .whatIsThis .titleLine.data-v-72ed5cf8 {
   height: 40rpx;
   position: relative;
 }
-#likeRichText .content .whatIsThis .bigImg .titleLine .arrow1.data-v-72ed5cf8 {
+#likeRichText .content .whatIsThis .titleLine .arrow.data-v-72ed5cf8 {
   position: absolute;
+  top: 10rpx;
+  height: 26rpx;
+  width: 26rpx;
+  border: 1px solid #000;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 15rpx;
+}
+#likeRichText .content .whatIsThis .titleLine .arrowno.data-v-72ed5cf8 {
+  border-color: #aaa;
+}
+#likeRichText .content .whatIsThis .titleLine .arrow1.data-v-72ed5cf8 {
   left: 80rpx;
-  top: 10rpx;
-  text-align: center;
-  line-height: 16rpx;
-  border: 1px solid #000;
-  border-radius: 50%;
-  height: 24rpx;
-  width: 24rpx;
 }
-#likeRichText .content .whatIsThis .bigImg .titleLine .arrow2.data-v-72ed5cf8 {
-  position: absolute;
+#likeRichText .content .whatIsThis .titleLine .arrow2.data-v-72ed5cf8 {
   left: 130rpx;
-  top: 10rpx;
-  text-align: center;
-  line-height: 16rpx;
-  border: 1px solid #000;
-  border-radius: 50%;
-  height: 24rpx;
-  width: 24rpx;
 }
-#likeRichText .content .whatIsThis .bigImg .titleLine .xx.data-v-72ed5cf8 {
+#likeRichText .content .whatIsThis .titleLine .xx.data-v-72ed5cf8 {
   position: absolute;
   right: 20rpx;
   top: 10rpx;
   width: 30rpx;
   height: 24rpx;
   line-height: 24rpx;
+}
+#likeRichText .content .whatIsThis .bigImg .bImg.data-v-72ed5cf8 {
+  width: 320rpx;
+  height: 320rpx;
+  display: block;
+}
+#likeRichText .content .whatIsThis .smallImg.data-v-72ed5cf8 {
+  width: 750rpx;
+  height: 600rpx;
+}
+#likeRichText .content .whatIsThis .smallImg .con .img.data-v-72ed5cf8 {
+  width: 200rpx;
+  height: 200rpx;
+}
+#likeRichText .content .whatIsThis .textarea.data-v-72ed5cf8 {
+  min-height: 150rpx;
+  width: 100%;
+}
+#likeRichText .content .whatIsThis .tags.data-v-72ed5cf8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+#likeRichText .content .whatIsThis .tags .tag.data-v-72ed5cf8 {
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #ff9;
+  margin: 10rpx;
+}
+#likeRichText .content .whatIsThis .tags .tag .close.data-v-72ed5cf8 {
+  margin-left: 50rpx;
 }
 #likeRichText .btns.data-v-72ed5cf8 {
   margin-top: 20rpx;
@@ -87,5 +117,71 @@
   width: 25%;
   height: 70rpx;
   line-height: 70rpx;
+}
+#pupup.data-v-72ed5cf8 {
+  overflow: hidden;
+}
+#pupup .mask.data-v-72ed5cf8 {
+  position: absolute;
+  height: 100%;
+  left: 0 ;
+  right: 0;
+  top: 0 ;
+  bottom: 0;
+  background-color: #444;
+  opacity: 0.6;
+}
+#pupup .popup.data-v-72ed5cf8 {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 0;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  z-index: 9;
+  padding: 20rpx;
+}
+#pupup .popup .addTag.data-v-72ed5cf8 {
+  height: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+#pupup .popup .addTag .putin.data-v-72ed5cf8 {
+  height: 80rpx;
+}
+#pupup .popup .addTag .btn.data-v-72ed5cf8 {
+  margin: 0;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+#pupup .popup .commonTags .title.data-v-72ed5cf8 {
+  color: #aaa;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+#pupup .popup .commonTags .commonTag.data-v-72ed5cf8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+#pupup .popup .commonTags .commonTag .tagName.data-v-72ed5cf8 {
+  padding: 5rpx;
+  font-size: 28rpx;
+  margin: 0 40rpx 10rpx 0;
+  border: 1px solid #ccc;
+  border-radius: 15rpx;
+  font-weight: 500;
 }
 
