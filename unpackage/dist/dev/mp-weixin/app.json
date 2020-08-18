@@ -1,37 +1,37 @@
 {
-  "pages": [
-    "pages/home-page/chainCourse/addNewCourse",
-    "pages/login/firstPage",
-    "pages/home-page/home_page",
-    "pages/login/agency",
-    "pages/login/forgetPassword",
-    "pages/login/visitor",
-    "pages/home-page/classroomReserve/appoint",
-    "pages/home-page/classroomReserve/addTrainAid",
-    "pages/home-page/classroomReserve/classroomReserveDetail",
-    "pages/home-page/classroomReserve/chooseClassroom",
-    "pages/home-page/classManage/classList",
-    "pages/home-page/classManage/students",
-    "pages/home-page/contact/contactPdf",
-    "pages/home-page/Service/adService/adService",
-    "pages/home-page/Service/billService/billList",
-    "pages/home-page/Service/lawyerService/lawyerIntroduce",
-    "pages/home-page/Service/InternetService/InternetIntroduce",
-    "pages/personal/firstPage",
-    "pages/info/info"
-  ],
-  "subPackages": [],
-  "window": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "vantStore",
-    "navigationBarBackgroundColor": "#ff9300",
-    "backgroundColor": "#FFFFFF"
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
-  },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap76.json"
+    "pages": [
+        "pages/home-page/chainCourse/addNewCourse",
+        "pages/login/firstPage",
+        "pages/home-page/home_page",
+        "pages/login/agency",
+        "pages/login/forgetPassword",
+        "pages/login/visitor",
+        "pages/home-page/classroomReserve/appoint",
+        "pages/home-page/classroomReserve/addTrainAid",
+        "pages/home-page/classroomReserve/classroomReserveDetail",
+        "pages/home-page/classroomReserve/chooseClassroom",
+        "pages/home-page/classManage/classList",
+        "pages/home-page/classManage/students",
+        "pages/home-page/contact/contactPdf",
+        "pages/home-page/Service/adService/adService",
+        "pages/home-page/Service/billService/billList",
+        "pages/home-page/Service/lawyerService/lawyerIntroduce",
+        "pages/home-page/Service/InternetService/InternetIntroduce",
+        "pages/personal/firstPage",
+        "pages/info/info"
+    ],
+    "subPackages": [],
+    "window": {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "vantStore",
+        "navigationBarBackgroundColor": "#ff9300",
+        "backgroundColor": "#FFFFFF"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "usingComponents": {},
+    "sitemapLocation": "sitemap99.json"
 }

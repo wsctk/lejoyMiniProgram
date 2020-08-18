@@ -1,15 +1,19 @@
 <template>
-	<view>
+	<view class='pagebody' :style="{'overflow-y': ismask}">
 		<view id='topbar'>课程名称：{{courseName}}</view>
 		<view id='addTitleImg'>
 			<view class='addicon' v-if='isTitleImgExist'></view>
 			<image :src='url' class='img' v-else></image>
 		</view>
 		<view id='likeRichText'>
-			<view class='content'>
+			<view class='content' >
 				<view v-for='(item, index) in itemList' :key='item.id' class='whatIsThis'>
 					<view class='titleLine'>
-						<view class='name'>{{item.desc}}</view>
+						<view class='name' v-show="item.mediaType==='bigImg'">大图</view>
+						<view class='name' v-show="item.mediaType==='multiImg'">小图</view>
+						<view class='name' v-show="item.mediaType==='text'">文字</view>
+						<view class='name' v-show="item.mediaType==='video'">视频</view>
+						<view class='name' v-show="item.mediaType==='tag'">标签</view>
 						<view  class='arrow1 arrow' @click='upup(index)' v-if='(index!==0)'>
 							<uni-icons size='10' type='arrowthinup'></uni-icons>
 						</view>
@@ -26,46 +30,52 @@
 							<uni-icons type='close'></uni-icons>
 						</view>
 					</view>
-					<view class='bigImg' v-show='item.bigImg'>
-						<image class='bImg' :src='item.url' webp='true'></image>
+					<view class='bigImg' v-show="item.mediaType==='bigImg'">
+						<image class='bImg' :src='item.content' @click='previewBigImg(item.content)'></image>
 					</view>
-					<movable-area class='smallImg' v-show='item.smallImg'>
-						<movable-view v-for='(img, index) in item.smallImgList' :key='img.id' class='con' :x="img.x" :y="img.y" direction="all" :damping="40" @change='onchange(img)' @touchstart='touchstart(img)' @touchend='touchend(img)' @mouseup='touchend(img)'>
-							<image :src='img.url' class='img' webp='true'></image>
+					<movable-area class='smallImg' v-show="item.mediaType==='multiImg'">
+						<movable-view v-for='(img, index) in item.contentList' :key='img.id' class='con' :x='img.x' :y='img.y' direction="all" :damping="40" @change='onchange($event,img)' @touchstart='touchstart(img)' @touchend='touchend(img)'>
+							<image :src='img.content' class='img'></image>
 							<!-- <view class='throwout' @click='worht(id)'>
 								<uni-icons type='close'></uni-icons>
 							</view> -->
 						</movable-view>
+						<!-- <view class='addsmallimg' :style="{left: add.x + 'rpx', top:add.y + 'rpx'}" @click='addsmallimg(item)'>
+							<uni-icons type='plusempty' size='30'></uni-icons>
+						</view> -->
 					</movable-area>
-					<textarea v-show='item.text' placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
-					<view class='video' v-show='item.video'>1237</view>
-					<view class='tags' v-show='item.tag'>
-						<view v-for='tag in item.tagsList' :key='tag.id' class='tag'>
+					<textarea v-show="item.mediaType==='text'" placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
+					<view class='videobox' v-show="item.mediaType==='video'">
+						<video :src='item.content' class='video'></video>
+					</view>
+					<view class='tags' v-show="item.mediaType==='tag'">
+						<view v-for='(tag, inindex) in item.contentList' :key='tag.id' class='tag'>
 							{{tag.content}}
-							<uni-icons type='close' class='close'></uni-icons>
+							<uni-icons type='close' class='close' @click='deleteTag(index, inindex)'></uni-icons>
 						</view>
 					</view>
 				</view>
 			</view>
 			<view class='btns'>
 				<button class='btn' @click='addBigImg'>大图</button>
-				<button class='btn' @click='addSmallImg'>小图</button>
+				<button class='btn' @click='addSmallImgs'>小图</button>
 				<button class='btn' @click='addText'>文字</button>
 				<button class='btn' @click="addVideo">视频</button>
-				<button class='btn' @click='dialogVisible=true'>标签</button>
+				<button class='btn' @click='showDialog'>标签</button>
 			</view>
+			<button @click='submit'>提交</button>
 		</view>
-		<view id='pupup' v-if='dialogVisible' @touchmove.stop.prevent="moveHandle">
-			<view class='mask' @click='dialogVisible=false'></view>
+		<view id='pupup' v-if='dialogVisible'>
+			<view class='mask' @click='closeDialog'></view>
 			<view class='popup'>
 				<view class='addTag'>
-					<input placeholder='请输入标签名,最大20字' class='putin'>
+					<input placeholder='请输入标签名,最大20字' class='putin' v-model='tag'>
 					<button class='btn' @click='addTag'>提交</button>
 				</view>
 				<view class='commonTags'>
 					<view class='title'>常用标签</view>
 					<view class='commonTag'>
-						<view v-for='tag in commonTagsList' :key='tag.id' class='tagName'>{{tag.name}}</view>
+						<button v-for='tag in commonTagsList' :key='tag.id' class='tagName' @click='addcommontag(tag)'>{{tag.content}}</button>
 					</view>
 				</view>
 			</view>
@@ -83,68 +93,194 @@
 				url: '',
 				itemList: [],
 				count: 0,
+				bigimg: [],
+				returnbigimg: '',
+				smallimg: [],
+				returnSmallImg: [],
+				isuploadfail: false,
+				video: [],
+				returnvideo: '',
+				imgcount: 0,
 				oldX: '',
 				oldY: '',
+				lineLast: 0,
+				colLastLine: 0,
+				add: {
+					x: 0,
+					y: 0
+				},
 				dialogVisible: false,
 				commonTagsList: [
-					{id:1, name: '常回家看看'},
-					{id:2, name: '不明觉厉'},
-					{id:3, name: '给力'},
-					{id:4, name: '神马都是浮云'},
-					{id:5, name: '网抑云'}
+					{id:1, content: '常回家看看'},
+					{id:2, content: '不明觉厉'},
+					{id:3, content: '给力'},
+					{id:4, content: '神马都是浮云'},
+					{id:5, content: '网抑云'}
 				],
-				istagexist: 0
+				istagexist: 0,
+				ismask: 'auto',
+				tag: ''
 			}
 		},
 		components: {uniIcons},
 		methods: {
-			moveHandle () {
-				return 
-			},
 			addBigImg () {
-				this.itemList.push({desc: '大图', url: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp', id: this.count, bigImg: true})
-				console.log(this.itemList)
-				this.count++
+				uni.chooseImage({
+				    count: 1,
+				    sizeType: ['original'], //可以指定是原图还是压缩图，默认二者都有
+				    sourceType: ['album', 'camera'], //从相册选择
+				    success: async (res) => {
+						this.bigimg = res.tempFilePaths
+						const result = await this.$sendimg({
+							url: 'picture/uploadPicture',
+							filepath: this.bigimg[0],
+							name: 'file'
+						})
+						this.returnbigimg = result.data
+						console.log(this.returnbigimg)
+						this.itemList.push({mediaType: 'bigImg', content: this.returnbigimg, id: this.count})
+						this.bigimg = ''
+						this.returnbigimg = []
+						this.count++
+				    }
+				})
 			},
-			addSmallImg () {
-				this.itemList.push({desc: '小图', smallImgList: [
-					{id:1, url: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp', x: '0rpx', y: '0rpx'},
-					{id:2, url: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp', x: '200rpx', y: '0rpx'},
-					{id:3, url: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp', x: '400rpx', y: '0rpx'},
-					{id:4, url: 'https://img.yzcdn.cn/upload_files/2020/06/28/Fhxh7YuXOq2SfSGeKeqTgr2CULlG.jpg!large.webp', x: '0rpx', y: '200rpx'},
-				], id: this.count, smallImg: true})
-				this.count++
+			previewBigImg (url) {
+				uni.previewImage({
+					urls: [url],
+					longPressActions: {
+						itemList: ['发送给朋友', '保存图片', '收藏'],
+						success: function(data) {
+							console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+						},
+						fail: function(err) {
+							console.log(err.errMsg);
+						}
+					}
+				});
 			},
+			addSmallImgs () {
+				uni.chooseImage({
+				    count: 6,
+				    sizeType: ['original'], 
+				    sourceType: ['album', 'camera'],
+				    success: async (res) => {
+						this.smallimg = res.tempFilePaths
+						for (let i=0; i<this.smallimg.length;i++) {
+							const result = await this.$sendimg({
+								url: 'picture/uploadPicture',
+								filepath: this.smallimg[i],
+								name: 'file',
+								fail: (err) => {
+									this.isuploadfail = true
+								}
+							})
+							if (!!this.isuploadfail) {
+								break
+							}
+							this.returnSmallImg.push({id: this.count, content: result.data, mediaType: 'img',x: '0rpx', y: '0rpx'})
+							this.count++
+						}
+						this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
+						this.returnSmallImg = []
+						this.smallimg = []
+						this.count++
+				    }
+				})
+			},
+			// addSmallImg (item) {
+			// 	uni.chooseImage({
+			// 	    count: 6, //默认9
+			// 	    sizeType: ['original'],
+			// 	    sourceType: ['album'],
+			// 	    success: (res) => {
+			// 	        const imgs = JSON.stringify(res.tempFilePaths)
+			// 			for (let i = 0;i< imgs.length; i++) {
+			// 				item.smallImgList.push({ id: this.imgcount, url: imgs.url})
+			// 				this.imgcount++
+			// 			}
+			// 	    }
+			// 	})
+			// },
+			// getAddBtnXY (index) {
+			// 	const length = this.itemList[index].smallImgList.length
+			// 	const result = Math.floor(length / 3)
+			// 	const remainder = length % 3 
+				
+			// },
 			addText () {
-				this.itemList.push({desc: '文本', content: '', id: this.count, text: true})
+				this.itemList.push({mediaType: 'text', content: '', id: this.count})
 				this.count++
 			},
 			addVideo () {
-				this.itemList.push({desc: '视频', url: '', id: this.count, video: true})
-				this.count++
+				uni.chooseVideo({
+					count: 1,
+					sourceType: ['camera', 'album'],
+					success: async (res) => {
+						this.video = res.tempFilePath
+						const result = await this.$sendimg({
+							url: 'picture/uploadPicture',
+							filepath: this.video,
+							name: 'file'
+						})
+						this.returnvideo = result.data
+						console.log(this.returnvideo)
+						this.itemList.push({mediaType: 'video', content: this.returnvideo, id: this.count})
+						this.count++
+					}
+				})
 			},
 			addTag () {
 				if (this.istagexist === 0) {
 					this.istagexist = 1
-					let length = this.itemList.length
+					const length = this.itemList.length - 1
 					const arr = this.itemList
-					console.log(arr)
-					arr.push('123')
-					for (let i=length-1; i<0; i--) {
+					this.itemList.push({id: -1})
+					for (let i= length; i >= 0; i--) {
 						this.$set(this.itemList, i+1, arr[i])
-						this.$set(this.itemList, i, arr[i+1])
 					}
-					const newTag = {desc: '标签', tagsList: [
-						{id:1, content: '123'},
-						{id:2, content: '123123123'},
-						{id:3, content: '12312'},
-						{id:4, content: '12323123333333'},
-					], id: 0, tag: true}
+					const newTag = {mediaType: 'tag', contentList: [
+						{id: this.count, content: this.tag, mediaType: 'txt'}
+					], id: this.count}
 					this.$set(this.itemList, 0, newTag)
 					this.count++
 				} else {
-					
+					const newTag = {id: this.count, content: this.tag, mediaType: 'txt'}
+					this.itemList[0].contentList.push(newTag)
+					this.count++
 				}
+			},
+			addcommontag (tag) {
+				this.tag = tag.content
+				if (this.istagexist === 0) {
+					this.istagexist = 1
+					const length = this.itemList.length - 1
+					const arr = this.itemList
+					this.itemList.push({id: -1})
+					for (let i= length; i >= 0; i--) {
+						this.$set(this.itemList, i+1, arr[i])
+					}
+					const newTag = {mediaType: 'tag', tagsList: [
+						{id: this.count, content: this.tag, mediaType: 'txt'}
+					], id: this.count}
+					this.$set(this.itemList, 0, newTag)
+					this.count++
+				} else {
+					const newTag = {id: this.count, content: this.tag, mediaType: 'txt'}
+					this.itemList[0].contentList.push(newTag)
+					this.count++
+				}
+			},
+			showDialog () {
+				this.dialogVisible = true
+				this.ismask = 'hidden'
+			},
+			closeDialog () {
+				this.dialogVisible = false
+				this.ismask = 'auto'
+			},
+			deleteTag (outer, inner) {
+				this.itemList[outer].tagsList.splice(inner, 1)
 			},
 			upup (index) {
 				const arr = []
@@ -161,26 +297,47 @@
 				this.$set(this.itemList, index, arr[1])
 			},
 			eleted (index) {
+				if (index === 0 && this.itemList[0].mediaType === 'tag') {
+					this.istagexist = 0
+				}
 				this.itemList.splice(index, 1)
-				this.count--
 			},
-			onchange (img) {
+			onchange (e,img) {
+				this.oldX = e.detail.x
+				this.oldY = e.detail.y
 			},
 			touchstart (img) {
-				img.x = 0
-				img.y = 0
-				console.log(img)
 			},
 			touchend (img) {
-				console.log(img)
-				img.x = '200rpx'
-				img.y = '200rpx'
+				img.x = this.oldX
+				img.y = this.oldY
+				setTimeout(() => {
+					this.$nextTick(() => {
+					  img.x = '200rpx'
+					  img.y = '200rpx'
+					})
+				}, 0)
+			},
+			async submit () {
+				const res = await this.$ask({
+					url: 'dragon/publishDragon',
+					data: { arr: this.itemList },
+					method: 'post',
+					header: {
+						'content-tyep': 'application/json'
+					}
+				})
+				console.log(res)
 			}
 		}
 	}
 </script>
 
 <style lang='less' scoped>
+	.pagebody {
+		height:1320rpx;
+		overflow-x: hidden;
+	}
 	#topbar {
 		height:80rpx;
 		text-align: center;
@@ -255,29 +412,49 @@
 				}
 				.bigImg {
 					.bImg {
-						width:320rpx;
-						height:320rpx;
+						width:80%;
+						height:480rpx;
 						display: block;
 					}
 				}
 				.smallImg {
-					width:750rpx;
+					width:100%;
 					height:600rpx;
+					/* padding: 20rpx; */
 					.con {
+						width:200rpx;
+						height:200rpx;
+						/* margin: 0 20rpx 20rpx 0; */
 						.img {
 							width:200rpx;
 							height:200rpx;
+							/* display: inline-block; */
 						}
+					}
+					.addsmallimg {
+						width: 200rpx;
+						height:200rpx;
+						text-align: center;
+						line-height: 200rpx;
+						position: absolute;
 					}
 				}
 				.textarea {
 					min-height:150rpx;
 					width:100%;
 				}
-				.video {}
+				.videobox {
+					height:400rpx;
+					.video {
+						width: 100%;
+						height:400rpx;
+					}
+				}
 				.tags {
 					display: flex;
 					flex-wrap: wrap;
+					max-height:200rpx;
+					overflow: auto;
 					.tag {
 						text-align: center;
 						height:50rpx;
@@ -302,10 +479,8 @@
 		}
 	}
 	#pupup {
-		overflow: hidden;
 		.mask {
 			position: absolute;
-			height:100%;
 			left:0 ; right:0;
 			top:0 ; bottom:0;
 			background-color: #444;
