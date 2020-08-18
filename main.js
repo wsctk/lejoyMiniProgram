@@ -2,10 +2,10 @@ import Vue from 'vue'
 import App from './App'
 import iconfont from './static/iconfont/iconfont.css'
 import {myRequest} from './util/api.js'
-import {myUpload} from './util/uploadimg.js'
+// import {myUpload} from './util/uploadimg.js'
 
 Vue.prototype.$ask = myRequest
-Vue.prototype.$sendimg = myUpload
+// Vue.prototype.$sendimg = myUpload
 
 Vue.config.productionTip = false
 

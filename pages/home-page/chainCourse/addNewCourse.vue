@@ -9,11 +9,11 @@
 			<view class='content' >
 				<view v-for='(item, index) in itemList' :key='item.id' class='whatIsThis'>
 					<view class='titleLine'>
-						<view class='name' v-show="item.mediaType==='bigImg'">大图</view>
-						<view class='name' v-show="item.mediaType==='multiImg'">小图</view>
-						<view class='name' v-show="item.mediaType==='text'">文字</view>
-						<view class='name' v-show="item.mediaType==='video'">视频</view>
-						<view class='name' v-show="item.mediaType==='tag'">标签</view>
+						<view class='name' v-if="item.mediaType==='bigImg'">大图</view>
+						<view class='name' v-else-if="item.mediaType==='multiImg'">小图</view>
+						<view class='name' v-else-if="item.mediaType==='text'">文字</view>
+						<view class='name' v-else-if="item.mediaType==='video'">视频</view>
+						<view class='name' v-else="item.mediaType==='tag'">标签</view>
 						<view  class='arrow1 arrow' @click='upup(index)' v-if='(index!==0)'>
 							<uni-icons size='10' type='arrowthinup'></uni-icons>
 						</view>
@@ -30,10 +30,10 @@
 							<uni-icons type='close'></uni-icons>
 						</view>
 					</view>
-					<view class='bigImg' v-show="item.mediaType==='bigImg'">
+					<view class='bigImg' v-if="item.mediaType==='bigImg'">
 						<image class='bImg' :src='item.content' @click='previewBigImg(item.content)'></image>
 					</view>
-					<movable-area class='smallImg' v-show="item.mediaType==='multiImg'">
+					<movable-area class='smallImg' v-else-if="item.mediaType==='multiImg'">
 						<movable-view v-for='(img, index) in item.contentList' :key='img.id' class='con' :x='img.x' :y='img.y' direction="all" :damping="40" @change='onchange($event,img)' @touchstart='touchstart(img)' @touchend='touchend(img)'>
 							<image :src='img.content' class='img'></image>
 							<!-- <view class='throwout' @click='worht(id)'>
@@ -44,11 +44,11 @@
 							<uni-icons type='plusempty' size='30'></uni-icons>
 						</view> -->
 					</movable-area>
-					<textarea v-show="item.mediaType==='text'" placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
-					<view class='videobox' v-show="item.mediaType==='video'">
+					<textarea v-else-if="item.mediaType==='text'" placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
+					<view class='videobox' v-else-if="item.mediaType==='video'">
 						<video :src='item.content' class='video'></video>
 					</view>
-					<view class='tags' v-show="item.mediaType==='tag'">
+					<view class='tags' v-else="item.mediaType==='tag'">
 						<view v-for='(tag, inindex) in item.contentList' :key='tag.id' class='tag'>
 							{{tag.content}}
 							<uni-icons type='close' class='close' @click='deleteTag(index, inindex)'></uni-icons>
@@ -131,17 +131,17 @@
 				    sourceType: ['album', 'camera'], //从相册选择
 				    success: async (res) => {
 						this.bigimg = res.tempFilePaths
-						const result = await this.$sendimg({
-							url: 'picture/uploadPicture',
-							filepath: this.bigimg[0],
-							name: 'file'
-						})
-						this.returnbigimg = result.data
-						console.log(this.returnbigimg)
-						this.itemList.push({mediaType: 'bigImg', content: this.returnbigimg, id: this.count})
-						this.bigimg = ''
-						this.returnbigimg = []
-						this.count++
+				// 		const result = await this.$sendimg({
+				// 			url: 'picture/uploadPicture',
+				// 			filepath: this.bigimg[0],
+				// 			name: 'file'
+				// 		})
+				// 		this.returnbigimg = result.data
+				// 		console.log(this.returnbigimg)
+				// 		this.itemList.push({mediaType: 'bigImg', content: this.returnbigimg, id: this.count})
+				// 		this.bigimg = ''
+				// 		this.returnbigimg = []
+				// 		this.count++
 				    }
 				})
 			},
@@ -166,25 +166,25 @@
 				    sourceType: ['album', 'camera'],
 				    success: async (res) => {
 						this.smallimg = res.tempFilePaths
-						for (let i=0; i<this.smallimg.length;i++) {
-							const result = await this.$sendimg({
-								url: 'picture/uploadPicture',
-								filepath: this.smallimg[i],
-								name: 'file',
-								fail: (err) => {
-									this.isuploadfail = true
-								}
-							})
-							if (!!this.isuploadfail) {
-								break
-							}
-							this.returnSmallImg.push({id: this.count, content: result.data, mediaType: 'img',x: '0rpx', y: '0rpx'})
-							this.count++
-						}
-						this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
-						this.returnSmallImg = []
-						this.smallimg = []
-						this.count++
+						// for (let i=0; i<this.smallimg.length;i++) {
+						// 	const result = await this.$sendimg({
+						// 		url: 'picture/uploadPicture',
+						// 		filepath: this.smallimg[i],
+						// 		name: 'file',
+						// 		fail: (err) => {
+						// 			this.isuploadfail = true
+						// 		}
+						// 	})
+						// 	if (!!this.isuploadfail) {
+						// 		break
+						// 	}
+						// 	this.returnSmallImg.push({id: this.count, content: result.data, mediaType: 'img',x: '0rpx', y: '0rpx'})
+						// 	this.count++
+						// }
+						// this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
+						// this.returnSmallImg = []
+						// this.smallimg = []
+						// this.count++
 				    }
 				})
 			},
@@ -218,21 +218,20 @@
 					sourceType: ['camera', 'album'],
 					success: async (res) => {
 						this.video = res.tempFilePath
-						const result = await this.$sendimg({
-							url: 'picture/uploadPicture',
-							filepath: this.video,
-							name: 'file'
-						})
-						this.returnvideo = result.data
-						console.log(this.returnvideo)
-						this.itemList.push({mediaType: 'video', content: this.returnvideo, id: this.count})
-						this.count++
+						// const result = await this.$sendimg({
+						// 	url: 'picture/uploadPicture',
+						// 	filepath: this.video,
+						// 	name: 'file'
+						// })
+						// this.returnvideo = result.data
+						// console.log(this.returnvideo)
+						// this.itemList.push({mediaType: 'video', content: this.returnvideo, id: this.count})
+						// this.count++
 					}
 				})
 			},
 			addTag () {
 				if (this.istagexist === 0) {
-					this.istagexist = 1
 					const length = this.itemList.length - 1
 					const arr = this.itemList
 					this.itemList.push({id: -1})
@@ -243,6 +242,7 @@
 						{id: this.count, content: this.tag, mediaType: 'txt'}
 					], id: this.count}
 					this.$set(this.itemList, 0, newTag)
+					this.istagexist = 1
 					this.count++
 				} else {
 					const newTag = {id: this.count, content: this.tag, mediaType: 'txt'}
@@ -260,7 +260,7 @@
 					for (let i= length; i >= 0; i--) {
 						this.$set(this.itemList, i+1, arr[i])
 					}
-					const newTag = {mediaType: 'tag', tagsList: [
+					const newTag = {mediaType: 'tag', contentList: [
 						{id: this.count, content: this.tag, mediaType: 'txt'}
 					], id: this.count}
 					this.$set(this.itemList, 0, newTag)
