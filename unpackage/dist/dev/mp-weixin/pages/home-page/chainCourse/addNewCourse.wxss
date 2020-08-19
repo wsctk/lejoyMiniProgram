@@ -3,8 +3,43 @@
   overflow-x: hidden;
 }
 #topbar.data-v-72ed5cf8 {
+  width: 95%;
+  margin: 0 auto;
+  background-color: #4CD964;
+  height: 300rpx;
+  position: relative;
+}
+#topbar .avator.data-v-72ed5cf8 {
+  position: absolute;
+  width: 80rpx;
   height: 80rpx;
-  text-align: center;
+  top: 180rpx;
+  left: 40rpx;
+}
+#topbar .name.data-v-72ed5cf8 {
+  position: absolute;
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  top: 200rpx;
+  left: 170rpx;
+}
+#titlebar.data-v-72ed5cf8 {
+  height: 80rpx;
+  width: 95%;
+  margin: 0 auto 20rpx auto;
+  border: 1px solid #eee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+#titlebar .titleinput.data-v-72ed5cf8 {
+  height: 60rpx;
+  width: 100%;
 }
 #addTitleImg.data-v-72ed5cf8 {
   width: 95%;
@@ -82,28 +117,6 @@
   height: 480rpx;
   display: block;
 }
-#likeRichText .content .whatIsThis .smallImg.data-v-72ed5cf8 {
-  width: 100%;
-  height: 600rpx;
-  /* padding: 20rpx; */
-}
-#likeRichText .content .whatIsThis .smallImg .con.data-v-72ed5cf8 {
-  width: 200rpx;
-  height: 200rpx;
-  /* margin: 0 20rpx 20rpx 0; */
-}
-#likeRichText .content .whatIsThis .smallImg .con .img.data-v-72ed5cf8 {
-  width: 200rpx;
-  height: 200rpx;
-  /* display: inline-block; */
-}
-#likeRichText .content .whatIsThis .smallImg .addsmallimg.data-v-72ed5cf8 {
-  width: 200rpx;
-  height: 200rpx;
-  text-align: center;
-  line-height: 200rpx;
-  position: absolute;
-}
 #likeRichText .content .whatIsThis .textarea.data-v-72ed5cf8 {
   min-height: 150rpx;
   width: 100%;
@@ -144,6 +157,30 @@
   width: 25%;
   height: 70rpx;
   line-height: 70rpx;
+}
+#Registration.data-v-72ed5cf8 {
+  padding: 40rpx;
+}
+#Registration .title.data-v-72ed5cf8 {
+  height: 50rpx;
+  margin: 0 auto;
+  width: 95%;
+}
+#Registration .common.data-v-72ed5cf8 {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100rpx;
+}
+#Registration .input.data-v-72ed5cf8 {
+  height: 60rpx;
+  width: 60%;
 }
 #pupup .mask.data-v-72ed5cf8 {
   position: absolute;
@@ -206,5 +243,8 @@
   border: 1px solid #ccc;
   border-radius: 15rpx;
   font-weight: 500;
+}
+.time.data-v-72ed5cf8 {
+  height: 200rpx;
 }
 

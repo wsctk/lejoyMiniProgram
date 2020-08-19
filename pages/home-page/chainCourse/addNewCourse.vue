@@ -1,9 +1,13 @@
 <template>
 	<view class='pagebody' :style="{'overflow-y': ismask}">
-		<view id='topbar'>课程名称：{{courseName}}</view>
-		<view id='addTitleImg'>
-			<view class='addicon' v-if='isTitleImgExist'></view>
-			<image :src='url' class='img' v-else></image>
+		<view id='topbar'>
+			<view class='container'>
+				<image class='avator' src='../../../static/logo.png'></image>
+				<view class='name'>{{username}}</view>
+			</view>
+		</view>
+		<view id='titlebar'>
+			<input placeholder="请输入需要报名的课程(必填)" v-model='courseName' class='titleinput'/>
 		</view>
 		<view id='likeRichText'>
 			<view class='content' >
@@ -33,17 +37,7 @@
 					<view class='bigImg' v-if="item.mediaType==='bigImg'">
 						<image class='bImg' :src='item.content' @click='previewBigImg(item.content)'></image>
 					</view>
-					<movable-area class='smallImg' v-else-if="item.mediaType==='multiImg'">
-						<movable-view v-for='(img, index) in item.contentList' :key='img.id' class='con' :x='img.x' :y='img.y' direction="all" :damping="40" @change='onchange($event,img)' @touchstart='touchstart(img)' @touchend='touchend(img)'>
-							<image :src='img.content' class='img'></image>
-							<!-- <view class='throwout' @click='worht(id)'>
-								<uni-icons type='close'></uni-icons>
-							</view> -->
-						</movable-view>
-						<!-- <view class='addsmallimg' :style="{left: add.x + 'rpx', top:add.y + 'rpx'}" @click='addsmallimg(item)'>
-							<uni-icons type='plusempty' size='30'></uni-icons>
-						</view> -->
-					</movable-area>
+					<shmily-drag-image :list.sync="item.contentList" v-if="item.mediaType==='multiImg'" :cols='3'></shmily-drag-image>
 					<textarea v-else-if="item.mediaType==='text'" placeholder="请输入文字" v-model='item.content' class='textarea' auto-height></textarea>
 					<view class='videobox' v-else-if="item.mediaType==='video'">
 						<video :src='item.content' class='video'></video>
@@ -65,6 +59,29 @@
 			</view>
 			<button @click='submit'>提交</button>
 		</view>
+		<view id='Registration'>
+			<view class='title'>课程设置</view>
+			<view class='price common'>费用：<input class='input' v-model='price'></view>
+			<view class='personLimit common'>人数：<input class='input' v-model='personNumber'></view>
+			<view class='place common'>地点：<input class='input' v-model='place'></view>
+			
+		</view>
+		<view class='time'>
+			<view class="uni-padding-wrap">
+				<view class="uni-title">日期：{{year}}年{{month}}月{{day}}日</view>
+			</view>
+			<picker-view v-if="visible" :indicator-style="indicatorStyle" :value="value" @change="bindChange">
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in years" :key="index">{{item}}年</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in months" :key="index">{{item}}月</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in days" :key="index">{{item}}日</view>
+				</picker-view-column>
+			</picker-view>
+		</view>
 		<view id='pupup' v-if='dialogVisible'>
 			<view class='mask' @click='closeDialog'></view>
 			<view class='popup'>
@@ -85,10 +102,38 @@
 
 <script>
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
+	import shmilyDragImage from '@/components/shmily-drag-image/shmily-drag-image.vue'
 	export default {
 		data () {
+			const date = new Date()
+			const years = []
+			const year = date.getFullYear()
+			const months = []
+			const month = date.getMonth() + 1
+			const days = []
+			const day = date.getDate()
+			for (let i = 1990; i <= date.getFullYear(); i++) {
+				years.push(i)
+			}
+			for (let i = 1; i <= 12; i++) {
+				months.push(i)
+			}
+			for (let i = 1; i <= 31; i++) {
+				days.push(i)
+			}
 			return {
-				courseName: '什么课程呢',
+				title: 'picker-view',
+				years,
+				year,
+				months,
+				month,
+				days,
+				day,
+				value: [9999, month - 1, day - 1],
+				visible: true,
+				indicatorStyle: 'height: 50rpx',
+				username: '用户名',
+				courseName: '',
 				isTitleImgExist: true,
 				url: '',
 				itemList: [],
@@ -122,8 +167,14 @@
 				tag: ''
 			}
 		},
-		components: {uniIcons},
+		components: {uniIcons, shmilyDragImage},
 		methods: {
+			bindChange (e) {
+				const val = e.detail.value
+				this.year = this.years[val[0]]
+				this.month = this.months[val[1]]
+				this.day = this.days[val[2]]
+			},
 			addBigImg () {
 				uni.chooseImage({
 				    count: 1,
@@ -131,17 +182,15 @@
 				    sourceType: ['album', 'camera'], //从相册选择
 				    success: async (res) => {
 						this.bigimg = res.tempFilePaths
-				// 		const result = await this.$sendimg({
-				// 			url: 'picture/uploadPicture',
-				// 			filepath: this.bigimg[0],
-				// 			name: 'file'
-				// 		})
-				// 		this.returnbigimg = result.data
-				// 		console.log(this.returnbigimg)
-				// 		this.itemList.push({mediaType: 'bigImg', content: this.returnbigimg, id: this.count})
-				// 		this.bigimg = ''
-				// 		this.returnbigimg = []
-				// 		this.count++
+						const result = await this.$sendimg({
+							url: 'picture/uploadPicture',
+							filepath: this.bigimg[0],
+							name: 'file'
+						})
+						this.returnbigimg = result.data
+						console.log(this.returnbigimg)
+						this.itemList.push({mediaType: 'bigImg', content: this.returnbigimg, id: this.count})
+						this.count++
 				    }
 				})
 			},
@@ -161,53 +210,38 @@
 			},
 			addSmallImgs () {
 				uni.chooseImage({
-				    count: 6,
-				    sizeType: ['original'], 
-				    sourceType: ['album', 'camera'],
-				    success: async (res) => {
+					count: 6,
+					sizeType: ['original'], 
+					sourceType: ['album', 'camera'],
+					success: async (res) => {
 						this.smallimg = res.tempFilePaths
-						// for (let i=0; i<this.smallimg.length;i++) {
-						// 	const result = await this.$sendimg({
-						// 		url: 'picture/uploadPicture',
-						// 		filepath: this.smallimg[i],
-						// 		name: 'file',
-						// 		fail: (err) => {
-						// 			this.isuploadfail = true
-						// 		}
-						// 	})
-						// 	if (!!this.isuploadfail) {
-						// 		break
-						// 	}
-						// 	this.returnSmallImg.push({id: this.count, content: result.data, mediaType: 'img',x: '0rpx', y: '0rpx'})
-						// 	this.count++
-						// }
-						// this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
-						// this.returnSmallImg = []
-						// this.smallimg = []
-						// this.count++
-				    }
+						for (let i=0; i<this.smallimg.length;i++) {
+							const result = await this.$sendimg({
+								url: 'picture/uploadPicture',
+								filepath: this.smallimg[i],
+								name: 'file',
+								fail: (err) => {
+									this.isuploadfail = true
+								}
+							})
+							if (!!this.isuploadfail) {
+								uni.showToast({
+									title: '上传图片失败',
+									icon: 'none'
+								})
+								break
+							}
+							this.returnSmallImg.push({content: result.data, mediaType: 'img',})
+							this.count++
+						}
+						this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
+						console.log(this.returnSmallImg)
+						this.returnSmallImg = []
+						this.smallimg = []
+						this.count++
+					}
 				})
 			},
-			// addSmallImg (item) {
-			// 	uni.chooseImage({
-			// 	    count: 6, //默认9
-			// 	    sizeType: ['original'],
-			// 	    sourceType: ['album'],
-			// 	    success: (res) => {
-			// 	        const imgs = JSON.stringify(res.tempFilePaths)
-			// 			for (let i = 0;i< imgs.length; i++) {
-			// 				item.smallImgList.push({ id: this.imgcount, url: imgs.url})
-			// 				this.imgcount++
-			// 			}
-			// 	    }
-			// 	})
-			// },
-			// getAddBtnXY (index) {
-			// 	const length = this.itemList[index].smallImgList.length
-			// 	const result = Math.floor(length / 3)
-			// 	const remainder = length % 3 
-				
-			// },
 			addText () {
 				this.itemList.push({mediaType: 'text', content: '', id: this.count})
 				this.count++
@@ -218,15 +252,15 @@
 					sourceType: ['camera', 'album'],
 					success: async (res) => {
 						this.video = res.tempFilePath
-						// const result = await this.$sendimg({
-						// 	url: 'picture/uploadPicture',
-						// 	filepath: this.video,
-						// 	name: 'file'
-						// })
-						// this.returnvideo = result.data
-						// console.log(this.returnvideo)
-						// this.itemList.push({mediaType: 'video', content: this.returnvideo, id: this.count})
-						// this.count++
+						const result = await this.$sendimg({
+							url: 'picture/uploadPicture',
+							filepath: this.video,
+							name: 'file'
+						})
+						this.returnvideo = result.data
+						console.log(this.returnvideo)
+						this.itemList.push({mediaType: 'video', content: this.returnvideo, id: this.count})
+						this.count++
 					}
 				})
 			},
@@ -302,22 +336,6 @@
 				}
 				this.itemList.splice(index, 1)
 			},
-			onchange (e,img) {
-				this.oldX = e.detail.x
-				this.oldY = e.detail.y
-			},
-			touchstart (img) {
-			},
-			touchend (img) {
-				img.x = this.oldX
-				img.y = this.oldY
-				setTimeout(() => {
-					this.$nextTick(() => {
-					  img.x = '200rpx'
-					  img.y = '200rpx'
-					})
-				}, 0)
-			},
 			async submit () {
 				const res = await this.$ask({
 					url: 'dragon/publishDragon',
@@ -339,8 +357,39 @@
 		overflow-x: hidden;
 	}
 	#topbar {
+		width:95%;
+		margin: 0 auto;
+		background-color: #4CD964;
+		height:300rpx;
+		position: relative;
+		.avator {
+			position: absolute;
+			width:80rpx;
+			height:80rpx;
+			top: 180rpx;
+			left:40rpx;
+		}
+		.name {
+			position: absolute;
+			width:100rpx;
+			height:40rpx;
+			line-height: 40rpx;
+			font-size: 32rpx;
+			top: 200rpx;
+			left:170rpx;
+		}
+	}
+	#titlebar {
 		height:80rpx;
-		text-align: center;
+		width:95%;
+		margin: 0 auto 20rpx auto;
+		border: 1px solid #eee;
+		display: flex;
+		align-items: center;
+		.titleinput {
+			height:60rpx;
+			width:100%;
+		}
 	}
 	#addTitleImg {
 		width:95%;
@@ -418,26 +467,6 @@
 					}
 				}
 				.smallImg {
-					width:100%;
-					height:600rpx;
-					/* padding: 20rpx; */
-					.con {
-						width:200rpx;
-						height:200rpx;
-						/* margin: 0 20rpx 20rpx 0; */
-						.img {
-							width:200rpx;
-							height:200rpx;
-							/* display: inline-block; */
-						}
-					}
-					.addsmallimg {
-						width: 200rpx;
-						height:200rpx;
-						text-align: center;
-						line-height: 200rpx;
-						position: absolute;
-					}
 				}
 				.textarea {
 					min-height:150rpx;
@@ -477,6 +506,31 @@
 				line-height: 70rpx;
 			}
 		}
+	}
+	#Registration {
+		padding: 40rpx;
+		.title {
+			height:50rpx;
+			margin: 0 auto;
+			width:95%;
+		}
+		.common {
+			width: 95%;
+			margin: 0 auto;
+			border: 1px solid #eee;
+			display: flex;
+			align-items: center;
+			height:100rpx;
+		}
+		.input {
+			height:60rpx;
+			width:60%;
+		}
+		.price {
+		}
+		.personLimit {	
+		}
+		.place {}
 	}
 	#pupup {
 		.mask {
@@ -532,5 +586,8 @@
 				}
 			}
 		}
+	}
+	.time {
+		height: 200rpx;
 	}
 </style>

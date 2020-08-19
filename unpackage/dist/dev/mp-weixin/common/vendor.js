@@ -1729,9 +1729,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 12:
-/*!******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/static/iconfont/iconfont.css ***!
-  \******************************************************************/
+/*!**************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/static/iconfont/iconfont.css ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1742,15 +1742,15 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 13:
-/*!*************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/util/api.js ***!
-  \*************************************************/
+/*!*********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/util/api.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0; // const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
-var BASE_URL = 'http://192.168.18.10:8083/';
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0;var BASE_URL = 'https://lexiang-mechanism.it-10.com/';
+// const BASE_URL = 'http://192.168.18.10:8083/' 
 var myRequest = function myRequest(options) {
   return new Promise(function (resolve, reject) {
     uni.request({
@@ -1924,10 +1924,45 @@ var myRequest = function myRequest(options) {
 
 /***/ }),
 
-/***/ 160:
-/*!*******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-icons/icons.js ***!
-  \*******************************************************************/
+/***/ 14:
+/*!***************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/util/uploadimg.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myUpload = void 0;var BASE_URL = 'https://lexiang-mechanism.it-10.com/';
+// const BASE_URL = 'http://192.168.18.10:8083/' 
+var myUpload = function myUpload(options) {
+  return new Promise(function (resolve, reject) {
+    uni.uploadFile({
+      url: BASE_URL + options.url,
+      filePath: options.filepath,
+      name: options.name,
+      header: options.header || {
+        'content-type': 'multipart/form-data' },
+
+      success: options.success || function (res) {
+        resolve(res);
+      },
+      fail: options.fail || function (err) {
+        uni.showToast({
+          title: '请求失败' });
+
+        reject(err);
+      } });
+
+  });
+};exports.myUpload = myUpload;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 161:
+/*!***************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-icons/icons.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2066,15 +2101,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 182:
-/*!*********************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/util.js ***!
-  \*********************************************************************/
+/***/ 190:
+/*!*****************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/util.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 183));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 191));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 Calendar = /*#__PURE__*/function () {
   function Calendar()
@@ -2404,10 +2439,10 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 183:
-/*!*************************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
-  \*************************************************************************/
+/***/ 191:
+/*!*********************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9005,18 +9040,18 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 20:
+/***/ 21:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 21);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 22);
 
 /***/ }),
 
-/***/ 21:
+/***/ 22:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9047,7 +9082,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 22);
+module.exports = __webpack_require__(/*! ./runtime */ 23);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9064,7 +9099,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9828,9 +9863,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/pages.json ***!
-  \************************************************/
+/*!********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/pages.json ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9839,9 +9874,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 8:
-/*!*******************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/common/amap-wx.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/common/amap-wx.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
