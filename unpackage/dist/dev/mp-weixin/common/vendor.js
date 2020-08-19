@@ -1729,9 +1729,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 12:
-/*!**************************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/static/iconfont/iconfont.css ***!
-  \**************************************************************/
+/*!******************************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/static/iconfont/iconfont.css ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1742,9 +1742,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 13:
-/*!*********************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/util/api.js ***!
-  \*********************************************/
+/*!*************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/util/api.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1925,9 +1925,9 @@ var myRequest = function myRequest(options) {
 /***/ }),
 
 /***/ 14:
-/*!***************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/util/uploadimg.js ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/util/uploadimg.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1959,10 +1959,10 @@ var myUpload = function myUpload(options) {
 
 /***/ }),
 
-/***/ 161:
-/*!***************************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/components/uni-icons/icons.js ***!
-  \***************************************************************/
+/***/ 168:
+/*!*******************************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-icons/icons.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2102,9 +2102,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 190:
-/*!*****************************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/util.js ***!
-  \*****************************************************************/
+/*!*********************************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/util.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2440,9 +2440,9 @@ Calendar;exports.default = _default;
 /***/ }),
 
 /***/ 191:
-/*!*********************************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
-  \*********************************************************************/
+/*!*************************************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9040,18 +9040,49 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 21:
+/***/ 29:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 22);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 30);
 
 /***/ }),
 
-/***/ 22:
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 30:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9082,7 +9113,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 23);
+module.exports = __webpack_require__(/*! ./runtime */ 31);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9099,7 +9130,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 31:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9831,41 +9862,10 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
 /***/ 4:
-/*!********************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/pages.json ***!
-  \********************************************/
+/*!************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/pages.json ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9874,9 +9874,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 8:
-/*!***************************************************!*\
-  !*** D:/lejoy/lejoyMiniProgram/common/amap-wx.js ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** D:/lejoyMini/lejoyMiniProgram/common/amap-wx.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

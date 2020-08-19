@@ -1,6 +1,13 @@
 {
 	"pages": [
 		{
+			"path": "pages/home-page/home_page",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/home-page/chainCourse/addNewCourse",
 			"style": {
 					"navigationBarTitleText": "leJoy",
@@ -14,13 +21,7 @@
 					"navigationStyle": "custom"
 				}
 		},
-		{
-			"path": "pages/home-page/home_page",
-			"style": {
-					"navigationBarTitleText": "leJoy",
-					"navigationStyle": "custom"
-				}
-		},
+		
 		{
 			"path": "pages/login/agency",
 			"style": {

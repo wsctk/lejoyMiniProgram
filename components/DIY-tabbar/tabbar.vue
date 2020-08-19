@@ -1,19 +1,19 @@
 <template name='tabbar'>
 	<view class='tabbar'>
 		<navigator url="/pages/home-page/home_page" open-type="navigate" class='left1 box'>
-			<image src='../static/1.jpg' class='img'></image>
+			<image src='../../static/1.jpg' class='img'></image>
 			<view>首页</view>
 		</navigator>
 		<navigator url="/pages/info/info" open-type="navigate" class='left2 box'>
-			<image src='../static/2.jpg' class='img'></image>
+			<image src='../../static/2.jpg' class='img'></image>
 			<view>资讯</view>
 		</navigator>
 		<navigator url="/pages/settled/settledinfo" open-type="navigate" class='changable box' v-show='isVisitor'>
-			<image src='../static/3.jpg' class='img'></image>
+			<image src='../../static/3.jpg' class='img'></image>
 			<view>申请入驻</view>
 		</navigator>
 		<navigator url="/pages/personal/firstPage" open-type="navigate" class='right box'>
-			<image src='../static/4.jpg' class='img'></image>
+			<image src='../../static/4.jpg' class='img'></image>
 			<view>个人中心</view>
 		</navigator>
 	</view>

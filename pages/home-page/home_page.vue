@@ -62,7 +62,7 @@
 
 <script>
 	import amap from '../../common/amap-wx.js'
-	import tabbar from 'common/tabbar.vue'
+	import tabbar from '../../components/DIY-tabbar/tabbar.vue'
 	export default {
 		data() {
 			return {

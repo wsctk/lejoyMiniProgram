@@ -1,4 +1,4 @@
-.tabbar.data-v-6b6b6164 {
+.tabbar.data-v-c2dc522a {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -8,7 +8,7 @@
   bottom: 0;
   background-color: #FFFFFF;
 }
-.tabbar .box.data-v-6b6b6164 {
+.tabbar .box.data-v-c2dc522a {
   padding: 20rpx;
   min-width: 180rpx;
   -webkit-box-flex: 1;
@@ -19,7 +19,7 @@
   box-sizing: border-box;
   font-size: 26rpx;
 }
-.tabbar .box .img.data-v-6b6b6164 {
+.tabbar .box .img.data-v-c2dc522a {
   width: 40rpx;
   height: 40rpx;
 }

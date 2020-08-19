@@ -131,7 +131,7 @@
 				day,
 				value: [9999, month - 1, day - 1],
 				visible: true,
-				indicatorStyle: 'height: 50rpx',
+				indicatorStyle: 'height: 30rpx',
 				username: '用户名',
 				courseName: '',
 				isTitleImgExist: true,
@@ -352,6 +352,27 @@
 </script>
 
 <style lang='less' scoped>
+	uni-picker-view {
+	display: block;
+	}
+	
+	uni-picker-view .uni-picker-view-wrapper {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	background-color: white;
+	}
+	
+	uni-picker-view[hidden] {
+	display: none;
+	}
+	
+	picker-view {
+	width: 100%;
+	height: 600upx;
+	margin-top:20upx;
+	}
 	.pagebody {
 		height:1320rpx;
 		overflow-x: hidden;
