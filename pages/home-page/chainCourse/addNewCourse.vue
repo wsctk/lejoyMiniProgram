@@ -64,24 +64,8 @@
 			<view class='price common'>费用：<input class='input' v-model='price'></view>
 			<view class='personLimit common'>人数：<input class='input' v-model='personNumber'></view>
 			<view class='place common'>地点：<input class='input' v-model='place'></view>
-			
 		</view>
-		<view class='time'>
-			<view class="uni-padding-wrap">
-				<view class="uni-title">日期：{{year}}年{{month}}月{{day}}日</view>
-			</view>
-			<picker-view v-if="visible" :indicator-style="indicatorStyle" :value="value" @change="bindChange">
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in years" :key="index">{{item}}年</view>
-				</picker-view-column>
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in months" :key="index">{{item}}月</view>
-				</picker-view-column>
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in days" :key="index">{{item}}日</view>
-				</picker-view-column>
-			</picker-view>
-		</view>
+		<pickerP></pickerP>
 		<view id='pupup' v-if='dialogVisible'>
 			<view class='mask' @click='closeDialog'></view>
 			<view class='popup'>
@@ -97,41 +81,20 @@
 				</view>
 			</view>
 		</view>
+		<!-- <button @click='qr'>qr</button>
+		<image :src='src'></image> -->
 	</view>
 </template>
 
 <script>
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
 	import shmilyDragImage from '@/components/shmily-drag-image/shmily-drag-image.vue'
+	// import picker from '@/components/DIY-TimeDatePicker/new_file.vue'
+	import pickerP from '@/components/DIY-TimeDatePicker/tiemPicker.vue'
 	export default {
 		data () {
-			const date = new Date()
-			const years = []
-			const year = date.getFullYear()
-			const months = []
-			const month = date.getMonth() + 1
-			const days = []
-			const day = date.getDate()
-			for (let i = 1990; i <= date.getFullYear(); i++) {
-				years.push(i)
-			}
-			for (let i = 1; i <= 12; i++) {
-				months.push(i)
-			}
-			for (let i = 1; i <= 31; i++) {
-				days.push(i)
-			}
 			return {
 				title: 'picker-view',
-				years,
-				year,
-				months,
-				month,
-				days,
-				day,
-				value: [9999, month - 1, day - 1],
-				visible: true,
-				indicatorStyle: 'height: 30rpx',
 				username: '用户名',
 				courseName: '',
 				isTitleImgExist: true,
@@ -164,13 +127,54 @@
 				],
 				istagexist: 0,
 				ismask: 'auto',
-				tag: ''
+				tag: '',
+				pickerArr: []
 			}
 		},
-		components: {uniIcons, shmilyDragImage},
+		components: {uniIcons, shmilyDragImage, pickerP},
 		methods: {
+			cancerP (data) {
+				console.log('123')
+			},
+			confirmP (data) {
+				console.log('321')
+			},
+			async qr () {
+				// const res = await this.$ask({
+				// 	url: 'qrCode/getQRCode',
+				// 	data: {
+				// 		path: 'pages/home-page/home-page',
+				// 		width: 200
+				// 	}
+				// })
+				// console.log(res)
+			},
 			bindChange (e) {
+				console.log(e)
 				const val = e.detail.value
+				switch (this.months[val[1]]) {
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+					 this.days = this.days1
+					 break
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+					 this.days = this.days2
+					 break
+					default:
+					 this.days = this.days3
+					 break
+				}
+				if ((this.years[val[0]] % 4) === 0 && this.months[val[1]] === 2) {
+					this.days = this.days4
+				}
 				this.year = this.years[val[0]]
 				this.month = this.months[val[1]]
 				this.day = this.days[val[2]]
@@ -352,27 +356,35 @@
 </script>
 
 <style lang='less' scoped>
+	/* .pickerD {
+		overflow: hidden;
+		padding: 0 14rpx;
+		margin:0 auto;
+		height: 300rpx;
+		margin-top:20rpx;
+		display: block;
+		z-index: 10;
+		picker-view-column {
+			flex:1 1 auto;
+			text-align: center;
+		}
+	}
 	uni-picker-view {
 	display: block;
-	}
+	} */
 	
-	uni-picker-view .uni-picker-view-wrapper {
+	/* uni-picker-view.uni-picker-view-wrapper {
 	display: flex;
 	position: relative;
 	overflow: hidden;
-	height: 100%;
+	height: 400rpx;
 	background-color: white;
-	}
 	
-	uni-picker-view[hidden] {
-	display: none;
-	}
+	} */
 	
-	picker-view {
-	width: 100%;
-	height: 600upx;
-	margin-top:20upx;
-	}
+	/* uni-picker-view[hidden] {
+		display: none;
+	} */
 	.pagebody {
 		height:1320rpx;
 		overflow-x: hidden;
@@ -607,8 +619,5 @@
 				}
 			}
 		}
-	}
-	.time {
-		height: 200rpx;
 	}
 </style>

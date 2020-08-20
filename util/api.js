@@ -1,5 +1,5 @@
-const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
-// const BASE_URL = 'http://192.168.18.10:8083/' 
+// const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
+const BASE_URL = 'http://192.168.18.10:8083/' 
 export const myRequest = (options)=>{
 	return new Promise((resolve,reject)=>{
 		uni.request({

@@ -8,7 +8,7 @@
 			<image src='../../static/2.jpg' class='img'></image>
 			<view>资讯</view>
 		</navigator>
-		<navigator url="/pages/settled/settledinfo" open-type="navigate" class='changable box' v-show='isVisitor'>
+		<navigator url="/pages/settled/settledinfo" open-type="navigate" class='changable box' v-if='isVisitor'>
 			<image src='../../static/3.jpg' class='img'></image>
 			<view>申请入驻</view>
 		</navigator>

@@ -760,7 +760,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1729,9 +1729,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 12:
-/*!******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/static/iconfont/iconfont.css ***!
-  \******************************************************************/
+/*!**************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/static/iconfont/iconfont.css ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1742,15 +1742,15 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 13:
-/*!*************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/util/api.js ***!
-  \*************************************************/
+/*!*********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/util/api.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0;var BASE_URL = 'https://lexiang-mechanism.it-10.com/';
-// const BASE_URL = 'http://192.168.18.10:8083/' 
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequest = void 0; // const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
+var BASE_URL = 'http://192.168.18.10:8083/';
 var myRequest = function myRequest(options) {
   return new Promise(function (resolve, reject) {
     uni.request({
@@ -1925,9 +1925,9 @@ var myRequest = function myRequest(options) {
 /***/ }),
 
 /***/ 14:
-/*!*******************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/util/uploadimg.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/util/uploadimg.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1960,9 +1960,9 @@ var myUpload = function myUpload(options) {
 /***/ }),
 
 /***/ 168:
-/*!*******************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-icons/icons.js ***!
-  \*******************************************************************/
+/*!***************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-icons/icons.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2102,9 +2102,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 190:
-/*!*********************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/util.js ***!
-  \*********************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/util.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2440,9 +2440,9 @@ Calendar;exports.default = _default;
 /***/ }),
 
 /***/ 191:
-/*!*************************************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
-  \*************************************************************************/
+/*!*********************************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/components/uni-calendar/calendar.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8520,7 +8520,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8541,14 +8541,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8633,7 +8633,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9863,9 +9863,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 4:
-/*!************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/pages.json ***!
-  \************************************************/
+/*!********************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/pages.json ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9874,9 +9874,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 8:
-/*!*******************************************************!*\
-  !*** D:/lejoyMini/lejoyMiniProgram/common/amap-wx.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** D:/lejoy/lejoyMiniProgram/common/amap-wx.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
