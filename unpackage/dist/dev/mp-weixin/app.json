@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home-page/chainCourse/addNewCourse",
+    "pages/home-page/chainCourse/preview",
+    "pages/home-page/chainCourse/relay",
     "pages/login/firstPage",
     "pages/home-page/home_page",
     "pages/login/agency",

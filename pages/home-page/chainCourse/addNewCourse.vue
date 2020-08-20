@@ -57,15 +57,20 @@
 				<button class='btn' @click="addVideo">视频</button>
 				<button class='btn' @click='showDialog'>标签</button>
 			</view>
-			<button @click='submit'>提交</button>
 		</view>
 		<view id='Registration'>
 			<view class='title'>课程设置</view>
 			<view class='price common'>费用：<input class='input' v-model='price'></view>
 			<view class='personLimit common'>人数：<input class='input' v-model='personNumber'></view>
 			<view class='place common'>地点：<input class='input' v-model='place'></view>
+			<view class='time'>
+				<view class='start' @click='openpicker1'>{{picker1[0]}}年{{picker1[1]}}月{{picker1[2]}}日{{picker1[3]}}时{{picker1[4]}}分{{picker1[5]}}秒</view>
+				--
+				<view class='end' @click='openpicker2'>{{picker2[0]}}年{{picker2[1]}}月{{picker2[2]}}日{{picker2[3]}}时{{picker2[4]}}分{{picker2[5]}}秒</view>
+			</view>
 		</view>
-		<pickerP></pickerP>
+		<button @click='submit'>保存并预览</button>
+		<pickerP :visible1='pickervisible' @cancer='cancerP' @confirm='confirmP'></pickerP>
 		<view id='pupup' v-if='dialogVisible'>
 			<view class='mask' @click='closeDialog'></view>
 			<view class='popup'>
@@ -89,12 +94,10 @@
 <script>
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
 	import shmilyDragImage from '@/components/shmily-drag-image/shmily-drag-image.vue'
-	// import picker from '@/components/DIY-TimeDatePicker/new_file.vue'
-	import pickerP from '@/components/DIY-TimeDatePicker/tiemPicker.vue'
+	import pickerP from '@/components/DIY-TimeDatePicker/timePicker.vue'
 	export default {
 		data () {
 			return {
-				title: 'picker-view',
 				username: '用户名',
 				courseName: '',
 				isTitleImgExist: true,
@@ -128,57 +131,29 @@
 				istagexist: 0,
 				ismask: 'auto',
 				tag: '',
-				pickerArr: []
+				price: '',
+				personNumber: '',
+				place: '',
+				pickervisible: false,
+				clickpicker: 1,
+				picker1: ['-','-','-','-','-','-'],
+				starttime: 0,
+				picker2: ['-','-','-','-','-','-'],
+				endtime: 0
 			}
 		},
 		components: {uniIcons, shmilyDragImage, pickerP},
 		methods: {
-			cancerP (data) {
-				console.log('123')
-			},
-			confirmP (data) {
-				console.log('321')
-			},
-			async qr () {
-				// const res = await this.$ask({
-				// 	url: 'qrCode/getQRCode',
-				// 	data: {
-				// 		path: 'pages/home-page/home-page',
-				// 		width: 200
-				// 	}
-				// })
-				// console.log(res)
-			},
-			bindChange (e) {
-				console.log(e)
-				const val = e.detail.value
-				switch (this.months[val[1]]) {
-					case 1:
-					case 3:
-					case 5:
-					case 7:
-					case 8:
-					case 10:
-					case 12:
-					 this.days = this.days1
-					 break
-					case 4:
-					case 6:
-					case 9:
-					case 11:
-					 this.days = this.days2
-					 break
-					default:
-					 this.days = this.days3
-					 break
-				}
-				if ((this.years[val[0]] % 4) === 0 && this.months[val[1]] === 2) {
-					this.days = this.days4
-				}
-				this.year = this.years[val[0]]
-				this.month = this.months[val[1]]
-				this.day = this.days[val[2]]
-			},
+			// async qr () {
+			// 	const res = await this.$ask({
+			// 		url: 'qrCode/getQRCode',
+			// 		data: {
+			// 			path: 'pages/home-page/home-page',
+			// 			width: 200
+			// 		}
+			// 	})
+			// 	console.log(res)
+			// },
 			addBigImg () {
 				uni.chooseImage({
 				    count: 1,
@@ -340,51 +315,42 @@
 				}
 				this.itemList.splice(index, 1)
 			},
-			async submit () {
-				const res = await this.$ask({
-					url: 'dragon/publishDragon',
-					data: { arr: this.itemList },
-					method: 'post',
-					header: {
-						'content-tyep': 'application/json'
-					}
+			openpicker1 () {
+				this.pickervisible = true
+				this.clickpicker = 1
+			},
+			openpicker2 () {
+				this.pickervisible = true
+				this.clickpicker = 2
+			},
+			cancerP () {
+				this.pickervisible = false
+			},
+			confirmP (data) {
+				if (this.clickpicker === 1) {
+					this.picker1 = [...data]
+					this.starttime = (new Date(`${data[0]}/${data[1]}/${data[2]} ${data[3]}:${data[4]}:${data[5]}`)).getTime()
+				} else {
+					this.picker2 = [...data]
+					this.endtime = (new Date(`${data[0]}/${data[1]}/${data[2]} ${data[3]}:${data[4]}:${data[5]}`)).getTime()
+				}
+				this.pickervisible = false
+			},
+			submit () {
+				uni.setStorageSync('title', this.courseName)
+				uni.setStorageSync('price', this.price)
+				uni.setStorageSync('createTime', this.starttime)
+				uni.setStorageSync('endTime', this.endtime)
+				uni.setStorageSync('contentsList', this.itemList)
+				uni.navigateTo({
+				    url: '/pages/home-page/chainCourse/preview'
 				})
-				console.log(res)
 			}
 		}
 	}
 </script>
 
 <style lang='less' scoped>
-	/* .pickerD {
-		overflow: hidden;
-		padding: 0 14rpx;
-		margin:0 auto;
-		height: 300rpx;
-		margin-top:20rpx;
-		display: block;
-		z-index: 10;
-		picker-view-column {
-			flex:1 1 auto;
-			text-align: center;
-		}
-	}
-	uni-picker-view {
-	display: block;
-	} */
-	
-	/* uni-picker-view.uni-picker-view-wrapper {
-	display: flex;
-	position: relative;
-	overflow: hidden;
-	height: 400rpx;
-	background-color: white;
-	
-	} */
-	
-	/* uni-picker-view[hidden] {
-		display: none;
-	} */
 	.pagebody {
 		height:1320rpx;
 		overflow-x: hidden;

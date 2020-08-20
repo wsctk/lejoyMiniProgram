@@ -4,6 +4,6 @@
   "usingComponents": {
     "uni-icons": "/components/uni-icons/uni-icons",
     "shmily-drag-image": "/components/shmily-drag-image/shmily-drag-image",
-    "picker-p": "/components/DIY-TimeDatePicker/tiemPicker"
+    "picker-p": "/components/DIY-TimeDatePicker/timePicker"
   }
 }

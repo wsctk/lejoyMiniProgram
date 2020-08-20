@@ -1,30 +1,3 @@
-/* .pickerD {
-	overflow: hidden;
-	padding: 0 14rpx;
-	margin:0 auto;
-	height: 300rpx;
-	margin-top:20rpx;
-	display: block;
-	z-index: 10;
-	picker-view-column {
-		flex:1 1 auto;
-		text-align: center;
-	}
-}
-uni-picker-view {
-display: block;
-} */
-/* uni-picker-view.uni-picker-view-wrapper {
-display: flex;
-position: relative;
-overflow: hidden;
-height: 400rpx;
-background-color: white;
-
-} */
-/* uni-picker-view[hidden] {
-	display: none;
-} */
 .pagebody.data-v-72ed5cf8 {
   height: 1320rpx;
   overflow-x: hidden;

@@ -1,12 +1,12 @@
 <template>
 	<view>
-		<view class="mask" v-if="visible"></view>
-		<view class="pickerBtn" v-if="visible">
-			<view class="cancer" @click="cancer">取消</view>
-			<view class="confirm" @click="confirm">确定</view>
+		<view class="mask" v-if="visible1" @click="$emit('cancer')"></view>
+		<view class="pickerBtn" v-if="visible1">
+			<view class="cancer" @click="$emit('cancer')">取消</view>
+			<view class="confirm" @click="$emit('confirm',realvalue)">确定</view>
 		</view>
 		<view>
-		<picker-view v-if="visible" :indicator-style="indicatorStyle" :value="value" @change="bindChange" class='picker'>
+		<picker-view v-if="visible1" :indicator-style="indicatorStyle" :value="value" @change="bindChange" class='picker'>
 			<picker-view-column class='column'>
 				<view class="item" v-for="(item,index) in years" :key="index">{{item}}年</view>
 			</picker-view-column>
@@ -32,12 +32,12 @@
 
 <script>
 	export default {
-		// props: {
-		// 	visible: {
-		// 		type: Boolean,
-		// 		value: true
-		// 	}
-		// },
+		props: {
+			visible1: {
+				type: Boolean,
+				value: true
+			}
+		},
 		data () {
 			const date = new Date()
 			const years = []
@@ -87,8 +87,6 @@
 				secs.push((i + '').padStart(2, '0'))
 			}
 			return {
-				src: '',
-				title: 'picker-view',
 				years,
 				year,
 				months,
@@ -99,59 +97,50 @@
 				days3,
 				days4,
 				day,
-				min,
-				mins,
-				hour,
 				hours,
-				sec,
+				hour,
+				mins,
+				min,
 				secs,
-				value: [9999, month - 1, day - 1],
-				visible: true,
+				sec,
+				value: [year, month -1 , day - 1,hour,min,sec],
+				realvalue: [year, month, day,hour,min,sec],
 				indicatorStyle: `height: 28px;`
 			}
 		},
 		methods: {
 			bindChange (e) {
-				console.log(e)
 				const val = e.detail.value
-				switch (this.months[val[1]]) {
-					case 1:
-					case 3:
-					case 5:
-					case 7:
-					case 8:
-					case 10:
-					case 12:
-					 this.days = this.days1
-					 break
-					case 4:
-					case 6:
-					case 9:
-					case 11:
-					 this.days = this.days2
-					 break
+				console.log(this.months[val[1]])
+				switch (`${this.months[val[1]]}`) {
+					case '01':
+					case '03':
+					case '05':
+					case '07':
+					case '08':
+					case '10':
+					case '12':
+						this.days = this.days1;
+						break;
+					case '04':
+					case '06':
+					case '09':
+					case '11':
+						this.days = this.days2;
+						break;
 					default:
-					 this.days = this.days3
-					 break
+						this.days = this.days3;
+						break
 				}
-				if ((this.years[val[0]] % 4) === 0 && this.months[val[1]] === 2) {
+				if ((this.years[val[0]] % 4) === 0 && `${this.months[val[1]]}` === '02') {
 					this.days = this.days4
 				}
-				this.year = this.years[val[0]]
-				this.month = this.months[val[1]]
-				this.day = this.days[val[2]]
-			},
-			cancer () {
-				this.visible = false
-				this.year = '',
-				this.month = '',
-				this.day = '',
-				this.hour = '',
-				this.min = '',
-				this.sec = ''
-			},
-			confirm () {
-				this.visible = false
+				this.realvalue[0] = this.years[val[0]]
+				this.realvalue[1] = this.months[val[1]]
+				this.realvalue[2] = this.days[val[2]]
+				this.realvalue[3] = this.hours[val[3]]
+				this.realvalue[4] = this.mins[val[4]]
+				this.realvalue[5] = this.secs[val[5]]
 			}
 		}
 	}

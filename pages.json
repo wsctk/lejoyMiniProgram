@@ -8,6 +8,20 @@
 				}
 		},
 		{
+			"path": "pages/home-page/chainCourse/preview",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
+			"path": "pages/home-page/chainCourse/relay",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/login/firstPage",
 			"style": {
 					"navigationBarTitleText": "leJoy",

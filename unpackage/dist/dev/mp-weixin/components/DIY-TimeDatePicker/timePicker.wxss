@@ -1,23 +1,23 @@
-.pickerView .picker.data-v-e42bb5c6 {
+.picker.data-v-3165a8c6 {
   background-color: #fff;
   width: 100%;
-  height: 247rpx;
-  position: absolute;
+  height: 400rpx;
+  position: fixed;
   bottom: 0;
   z-index: 1;
 }
-.pickerView .picker .column.data-v-e42bb5c6 {
+.picker .column.data-v-3165a8c6 {
   font-size: 40rpx;
   color: #000;
   text-align: center;
   line-height: 68rpx;
 }
-.pickerView .indicator.data-v-e42bb5c6 {
+.indicator.data-v-3165a8c6 {
   height: 68rpx;
   border-top: 1rpx solid #ADB0A7;
   border-bottom: 1rpx solid #ADB0A7;
 }
-.mask.data-v-e42bb5c6 {
+.mask.data-v-3165a8c6 {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,7 +27,7 @@
   z-index: 0;
   background: rgba(0, 0, 0, 0.5);
 }
-.pickerBtn.data-v-e42bb5c6 {
+.pickerBtn.data-v-3165a8c6 {
   width: 100%;
   height: 101rpx;
   line-height: 101rpx;
@@ -39,17 +39,17 @@
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
-  position: absolute;
-  bottom: 248rpx;
+  position: fixed;
+  bottom: 401rpx;
   border-bottom: 1rpx solid #ADB0A7;
   z-index: 1;
 }
-.pickerBtn .cancer.data-v-e42bb5c6 {
+.pickerBtn .cancer.data-v-3165a8c6 {
   color: #0076FF;
   padding-left: 40rpx;
   box-sizing: border-box;
 }
-.pickerBtn .confirm.data-v-e42bb5c6 {
+.pickerBtn .confirm.data-v-3165a8c6 {
   color: #FE4533;
   padding-right: 40rpx;
   box-sizing: border-box;
