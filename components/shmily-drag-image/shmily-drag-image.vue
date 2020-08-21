@@ -328,9 +328,10 @@ export default {
         return a.index - b.index
       })
       for (let i = 0; i < list.length; i++) {
-        list[i] = list[i].src
+        this.list[i] = list[i]
       }
-      this.$emit('update:list', list)
+   //    this.$emit('update:list', list)
+	  // console.log(this.list)
     },
     addProperties(item){
       let absX = this.imageList.length % this.colsValue
@@ -354,7 +355,6 @@ export default {
         offset: 0,
         moveEnd: false
       })
-	  console.log(this.imageList)
       this.add.x = (this.imageList.length % this.colsValue) * this.viewWidth + 'px'
       this.add.y = Math.floor(this.imageList.length / this.colsValue) * this.viewWidth + 'px'
       this.sortList()

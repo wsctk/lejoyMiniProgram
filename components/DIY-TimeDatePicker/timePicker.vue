@@ -153,7 +153,7 @@
 	  height: 400rpx;
 	  position: fixed;
 	  bottom: 0;
-	  z-index: 1;
+	  z-index: 2;
 	  .column {
 	    font-size: 40rpx;
 	    color: #000;
@@ -173,7 +173,7 @@
 		margin-top: 0%;
 		width: 100%;
 		height: 100%;
-		z-index: 0;
+		z-index: 1;
 		background: rgba(0,0,0,0.5);
 	}
 	.pickerBtn {
@@ -187,7 +187,7 @@
 		position: fixed;
 		bottom: 401rpx;
 		border-bottom: 1rpx solid #ADB0A7;
-		z-index: 1;
+		z-index: 2;
 		.cancer {
 			color: #0076FF;
 			padding-left: 40rpx;

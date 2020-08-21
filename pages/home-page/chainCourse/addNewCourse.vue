@@ -61,7 +61,7 @@
 		<view id='Registration'>
 			<view class='title'>课程设置</view>
 			<view class='price common'>费用：<input class='input' v-model='price'></view>
-			<view class='personLimit common'>人数：<input class='input' v-model='personNumber'></view>
+			<view class='personLimit common'>人数限制：<input class='input' v-model='personNumber'></view>
 			<view class='place common'>地点：<input class='input' v-model='place'></view>
 			<view class='time'>
 				<view class='start' @click='openpicker1'>{{picker1[0]}}年{{picker1[1]}}月{{picker1[2]}}日{{picker1[3]}}时{{picker1[4]}}分{{picker1[5]}}秒</view>
@@ -131,8 +131,8 @@
 				istagexist: 0,
 				ismask: 'auto',
 				tag: '',
-				price: '',
-				personNumber: '',
+				price: 0,
+				personNumber: 0,
 				place: '',
 				pickervisible: false,
 				clickpicker: 1,
@@ -157,8 +157,8 @@
 			addBigImg () {
 				uni.chooseImage({
 				    count: 1,
-				    sizeType: ['original'], //可以指定是原图还是压缩图，默认二者都有
-				    sourceType: ['album', 'camera'], //从相册选择
+				    sizeType: ['original'], 
+				    sourceType: ['album', 'camera'],
 				    success: async (res) => {
 						this.bigimg = res.tempFilePaths
 						const result = await this.$sendimg({
@@ -210,11 +210,13 @@
 								})
 								break
 							}
-							this.returnSmallImg.push({content: result.data, mediaType: 'img',})
+							this.returnSmallImg.push({content: result.data, mediaType: 'img'})
 							this.count++
 						}
-						this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
 						console.log(this.returnSmallImg)
+						this.itemList.push({mediaType: 'multiImg', contentList: this.returnSmallImg, id: this.count})
+						console.log(this.itemList)
+						
 						this.returnSmallImg = []
 						this.smallimg = []
 						this.count++
@@ -339,6 +341,8 @@
 			submit () {
 				uni.setStorageSync('title', this.courseName)
 				uni.setStorageSync('price', this.price)
+				uni.setStorageSync('personNumber', this.personNumber)
+				uni.setStorageSync('place', this.place)
 				uni.setStorageSync('createTime', this.starttime)
 				uni.setStorageSync('endTime', this.endtime)
 				uni.setStorageSync('contentsList', this.itemList)

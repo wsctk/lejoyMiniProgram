@@ -23,8 +23,8 @@
 				}
 			})
 		},
-		onShow: function() {
-			console.log('App Show')
+		onLoad (options) {
+			console.log(options.uid)
 		},
 		onHide: function() {
 			console.log('App Hide')

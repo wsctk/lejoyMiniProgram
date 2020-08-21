@@ -33,8 +33,10 @@
 						code: loginRes.code
 					}
 				})
+				console.log(res)
 				uni.setStorageSync('token', res.data.data.token)
 				uni.setStorageSync('userId', res.data.data.user.id)
+				console.log(res.data.data.user.id)
 			  }
 			})
 		},
@@ -45,9 +47,6 @@
 					url: 'login/getPhoneNumber',
 					data: {encryptedData: e.detail.encryptedData, iv: e.detail.iv, userId: userid},
 					method: 'post',
-					header: {
-						'content-type': 'application/json'
-					}
 				})
 				uni.setStorageSync('phonenumber', res.data.data)
 				if (res) {

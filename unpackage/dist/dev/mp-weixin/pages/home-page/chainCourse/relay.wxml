@@ -1,1 +1,1 @@
-<view>转发</view>
+<view><button open-type="share">转发</button><button data-event-opts="{{[['tap',[['poster',['$event']]]]]}}" bindtap="__e">生成海报</button></view>

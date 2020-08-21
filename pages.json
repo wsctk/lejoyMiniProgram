@@ -1,6 +1,13 @@
 {
 	"pages": [
 		{
+			"path": "pages/login/firstPage",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/home-page/chainCourse/addNewCourse",
 			"style": {
 					"navigationBarTitleText": "leJoy",
@@ -16,13 +23,6 @@
 		},
 		{
 			"path": "pages/home-page/chainCourse/relay",
-			"style": {
-					"navigationBarTitleText": "leJoy",
-					"navigationStyle": "custom"
-				}
-		},
-		{
-			"path": "pages/login/firstPage",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"

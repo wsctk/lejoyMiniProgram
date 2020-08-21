@@ -1,13 +1,13 @@
-// const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
-const BASE_URL = 'http://192.168.18.10:8083/' 
+const BASE_URL = 'https://lexiang-mechanism.it-10.com/'
+// const BASE_URL = 'http://192.168.18.10:8083/'
 export const myRequest = (options)=>{
 	return new Promise((resolve,reject)=>{
 		uni.request({
 			url:BASE_URL + options.url,
 			method:options.method || 'GET',
 			data:options.data || {},
-			header: options.header || {
-				'content-type': 'application/x-www-form-urlencoded', 
+			header: {
+				'content-type': 'application/json', 
 			},
 			success: options.success || ((res)=>{
 				switch (res.data.code) {
