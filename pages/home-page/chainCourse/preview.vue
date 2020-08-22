@@ -19,11 +19,11 @@
 				<view v-if="item.mediaType==='multiImg'" class='smallimgs'>
 					<image class='sImg' v-for='img in item.contentList' :key='img.id' :src='img.content'></image>
 				</view>
-				<textarea v-else-if="item.mediaType==='text'" v-model='item.content' class='textarea' auto-height></textarea>
-				<view class='videobox' v-else-if="item.mediaType==='video'">
+				<textarea v-if="item.mediaType==='text'" v-model='item.content' class='textarea' auto-height></textarea>
+				<view class='videobox' v-if="item.mediaType==='video'">
 					<video :src='item.content' class='video'></video>
 				</view>
-				<view class='tags' v-else="item.mediaType==='tag'">
+				<view class='tags' v-if="item.mediaType==='tag'">
 					<view v-for='tag in item.contentList' :key='tag.id' class='tag'>
 						{{tag.content}}
 					</view>
@@ -49,7 +49,7 @@
 			<view class='phone'>
 				手机号码：<input placeholder="请输入手机号码" v-model='chainphone' />
 			</view>
-			<button @click='IWantIt'>我要接龙</button>
+			<button open-type="getUserInfo" @getuserinfo='IwantChain'>我要接龙</button>
 		</view>
 	</view>
 </template>
@@ -69,12 +69,15 @@
 				itemList: [],
 				notvisit: true,
 				chainName: '',
-				chainphone: ''
+				chainphone: '',
+				index: 0,
+				transform: []
 			}
 		},
 		onLoad (options) {
 			const uid = options.uid
 			const id = options.id
+			// this.getDragon()
 			if (typeof(uid) === 'string') {
 				this.getDragon(uid, id)
 				console.log(uid)
@@ -112,32 +115,76 @@
 				})
 			},
 			async getDragon (userid, id) {
+				uni.setStorageSync('chainId', id)
 				const res = await this.$ask({
 					url: 'dragon/getDragon',
 					data: { uid: userid, id: id}
 				})
 				console.log(res)
-				this.courseName = res.data.data[0].title
-				this.price = res.data.data[0].price
-				this.personNumber = res.data.data[0].allowedNumberOfPeople
-				this.place = res.data.data[0].location
-				this.starttime = res.data.data[0].createTime
-				this.endtime = res.data.data[0].endTime
-				this.itemList = res.data.data[0].contentsList
-				// this.getwhocome()
+				this.courseName = res.data.data.title
+				this.price = res.data.data.price
+				this.personNumber = res.data.data.allowedNumberOfPeople
+				this.place = res.data.data.location
+				this.starttime = res.data.data.createTime
+				this.endtime = res.data.data.endTime
+				this.transform = res.data.data.contentsList
+				for (let i = 0; i< this.transform.length; i++) {
+					switch (this.transform[i].mediaType) {
+						case 'bigImg':
+						case 'video':
+						case 'text':
+						 this.itemList.push(this.transform[i])
+						 this.index += 1
+						 break
+						case 'img':
+						if (i === 0) {
+							this.itemList.push({ mediaType: 'multiImg', contentList: [] })
+						} else if (this.transform[i-1].mediaType !== 'img') {
+							this.itemList.push({ mediaType: 'multiImg', contentList: [] })
+						}
+						this.itemList[this.index].contentList.push(this.transform[i])
+						 if (i === (this.transform.length -1)) {
+						 	this.index = 0
+						 } else if ( this.transform[i+1].mediaType !=='img') {
+						 	this.index += 1
+						 }
+						 break
+						case 'txt':
+						 if (i === 0) {
+						 	this.itemList.push({ mediaType: 'tag', contentList: [] })
+						 } else if (this.transform[i-1].mediaType !== 'txt') {
+						 	this.itemList.push({ mediaType: 'tag', contentList: [] })
+						 }
+						 this.itemList[this.index].contentList.push(this.transform[i])
+						 if (i === (this.transform.length-1)) {
+							this.index = 0
+						 } else if ( this.transform[i+1].mediaType !=='txt') {
+							this.index += 1
+						 }
+						 break
+					}
+					
+				}
+				this.index = 0
+				// this.getwhocome(id)
+				
 			},
-			// async getwhocome () {
-			// 	const res = await this.$ask({
-			// 		url: 'dragon/getDragonUser'
-			// 	})
-			// 	console.log(res)
-			// },
-			async IWantIt () {
+			async getwhocome (id) {
+				const res = await this.$ask({
+					url: 'dragon/getDragonUser',
+					data: { did: id}
+				})
+				console.log(res)
+			},
+			async IwantChain (e) {
+				const id = uni.getStorageSync('chainId')
+				console.log(e.detail.userInfo)
 				const res = await this.$ask({
 					url: 'dragon/participate',
-					data: {},
+					data: { did: id, name: this.chainName, phone: this.chainphone, nickname: e.detail.userInfo.nickName, avatar: e.detail.userInfo.avatarUrl },
 					method: 'post'
 				})
+				console.log(res)
 			},
 			async submit () {
 				const userid = uni.getStorageSync('userId')
