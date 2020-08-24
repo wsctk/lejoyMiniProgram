@@ -149,6 +149,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -166,41 +170,33 @@ var _default =
 
   },
   methods: {
-    createPoster: function createPoster() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                _this.createQr();
-                // uni.chooseImage({
-                //     count: 1,
-                //     sourceType: ['album'],
-                //     success: function (res) {
-                //         uni.getImageInfo({
-                //             src: res.tempFilePaths[0],
-                //             success: function (image) {
-                //                 console.log(image)
-                //                 console.log(Ccontext)
-                // 				Ccontext.drawImage(image.path,0,0)
-                //             }
-                //         })
-                //     }
-                // })
-              case 1:case "end":return _context.stop();}}}, _callee);}))();},
-    createQr: function createQr() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var userid, id, res, Ccontext;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+    createQrAndPoster: function createQrAndPoster() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userid, id, res, Ccontext;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 userid = uni.getStorageSync('userId');
-                id = uni.getStorageSync('id');_context2.next = 4;return (
-                  _this2.$ask({
+                id = uni.getStorageSync('id');_context.next = 4;return (
+                  _this.$ask({
                     url: 'qrCode/getQRCode',
                     data: {
                       path: "/pages/home-page/chainCourse/preview?uid=".concat(userid, "&id=").concat(id),
-                      width: 300 } }));case 4:res = _context2.sent;
+                      width: 200 } }));case 4:res = _context.sent;
 
 
-                _this2.qrCodeUrl = res.data.data;
+                _this.qrCodeUrl = res.data.data;
                 Ccontext = uni.createCanvasContext('posterCanvas');
+                Ccontext.font = "18px bold 黑体";
+                Ccontext.fillStyle = "#ff0";
+                Ccontext.textAlign = "center";
                 uni.getImageInfo({
                   src: res.data.data,
                   success: function success(image) {
                     console.log(image.path);
-                    Ccontext.drawImage('/static/logo.png', 0, 0, 200, 200);
-                  } });case 8:case "end":return _context2.stop();}}}, _callee2);}))();
+                    Ccontext.drawImage('/static/logo.png', 0, 0, 375, 667);
+                    Ccontext.fillText('长按识别图中二维码', 187, 100);
+                    Ccontext.drawImage(image.path, 137, 450, 100, 100);
+                    Ccontext.draw();
+                  } });case 11:case "end":return _context.stop();}}}, _callee);}))();
+
+    },
+    saveTolocal: function saveTolocal() {
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
