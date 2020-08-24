@@ -35,19 +35,13 @@
 			<button @click='revise'>返回修改</button>
 		</view>
 		<view id='form' v-else>
-			<!-- <view class='peoplechain'>
+			<view class='peoplechain'>
 				<view class='courseName'></view>
 				<view class='who' v-for='(item,index) in chainList' :key='item.id'>
 					<view class='index'>{{index}}</view>
 					<image :src='item.src' class='avator'></image>
 					<view class='name'>{{item.name}}</view>
 				</view>
-			</view> -->
-			<view class='name'>
-				姓名：<input placeholder="请输入姓名" v-model='chainName' />
-			</view>
-			<view class='phone'>
-				手机号码：<input placeholder="请输入手机号码" v-model='chainphone' />
 			</view>
 			<button open-type="getUserInfo" @getuserinfo='IwantChain'>我要接龙</button>
 		</view>
@@ -71,16 +65,15 @@
 				chainName: '',
 				chainphone: '',
 				index: 0,
-				transform: []
+				transform: [],
+				chainList: []
 			}
 		},
 		onLoad (options) {
 			const uid = options.uid
 			const id = options.id
-			// this.getDragon()
 			if (typeof(uid) === 'string') {
 				this.getDragon(uid, id)
-				console.log(uid)
 				this.notvisit = false
 			} else {
 				this.courseName = uni.getStorageSync('title')
@@ -166,7 +159,7 @@
 					
 				}
 				this.index = 0
-				// this.getwhocome(id)
+				this.getwhocome(id)
 				
 			},
 			async getwhocome (id) {
@@ -175,16 +168,14 @@
 					data: { did: id}
 				})
 				console.log(res)
+				this.chainList = res.data.data
 			},
-			async IwantChain (e) {
-				const id = uni.getStorageSync('chainId')
-				console.log(e.detail.userInfo)
-				const res = await this.$ask({
-					url: 'dragon/participate',
-					data: { did: id, name: this.chainName, phone: this.chainphone, nickname: e.detail.userInfo.nickName, avatar: e.detail.userInfo.avatarUrl },
-					method: 'post'
+			IwantChain (e) {
+				uni.setStorageSync('nickname', e.detail.userInfo.nickName)
+				uni.setStorageSync('avatar', e.detail.userInfo.avatarUrl)
+				uni.navigateTo({
+					url: `/pages/home-page/chainCourse/iwantChain?courseName=${this.courseName}&stime=${this.realStartTime}`
 				})
-				console.log(res)
 			},
 			async submit () {
 				const userid = uni.getStorageSync('userId')

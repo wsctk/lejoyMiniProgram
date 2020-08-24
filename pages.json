@@ -1,6 +1,13 @@
 {
 	"pages": [
 		{
+			"path": "pages/home-page/chainCourse/relay",
+			"style": {
+					"navigationBarTitleText": "leJoy",
+					"navigationStyle": "custom"
+				}
+		},
+		{
 			"path": "pages/login/firstPage",
 			"style": {
 					"navigationBarTitleText": "leJoy",
@@ -22,7 +29,7 @@
 				}
 		},
 		{
-			"path": "pages/home-page/chainCourse/relay",
+			"path": "pages/home-page/chainCourse/iwantChain",
 			"style": {
 					"navigationBarTitleText": "leJoy",
 					"navigationStyle": "custom"

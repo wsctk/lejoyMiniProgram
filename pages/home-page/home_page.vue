@@ -13,7 +13,7 @@
 			<swiper :circular="true" class="swiper" :indicator-dots="indicatorDots" indicator-active-color='yellow' indicator-color='#aaa' :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item  v-for='item in swiperList' :key='item.id'>
 					<view>
-						<image :src="item.src"></image>
+						<image :src="item.picturePath"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -91,9 +91,19 @@
 			}
 		},
 		components: {tabbar},
+		onLoad () {
+			this.getCarousel()
+		},
 		methods: {
 			bindPickerChange: function(e) {
 				this.index = e.target.value
+			},
+			async getCarousel () {
+				const res = await this.$ask({
+					url: 'rotation/getRotation'
+				})
+				console.log(res)
+				this.swiperList = res.data.data
 			}
 		}
 	}
